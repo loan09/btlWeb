@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WebBanSach9Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebBanSach9.dbo.CT_HDBAN' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CT_HDBAN">
+    <Key>
+      <PropertyRef Name="MASACH" />
+      <PropertyRef Name="MAHDBAN" />
+      <PropertyRef Name="SLBAN" />
+    </Key>
+    <Property Name="MASACH" Type="int" Nullable="false" />
+    <Property Name="MAHDBAN" Type="int" Nullable="false" />
+    <Property Name="SLBAN" Type="int" Nullable="false" />
+    <Property Name="KHUYENMAI" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'WebBanSach9.dbo.CT_HDNHAP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CT_HDNHAP">
+    <Key>
+      <PropertyRef Name="MASACH" />
+      <PropertyRef Name="MAHDNHAP" />
+      <PropertyRef Name="SLNHAP" />
+    </Key>
+    <Property Name="MASACH" Type="int" Nullable="false" />
+    <Property Name="MAHDNHAP" Type="int" Nullable="false" />
+    <Property Name="SLNHAP" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOADONBAN">
+    <Key>
+      <PropertyRef Name="MAHDBAN" />
+    </Key>
+    <Property Name="MAHDBAN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NGAYLAPHDBAN" Type="datetime" />
+    <Property Name="ID_KHACHHANG" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOADONNHAP">
+    <Key>
+      <PropertyRef Name="MAHDNHAP" />
+    </Key>
+    <Property Name="MAHDNHAP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NGAYLAPHDNHAP" Type="datetime" />
+    <Property Name="MANCC" Type="int" />
+  </EntityType>
+  <EntityType Name="NHACC">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENNCC" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="SDT" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NXB">
+    <Key>
+      <PropertyRef Name="MANXB" />
+    </Key>
+    <Property Name="MANXB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENNXB" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SACH">
+    <Key>
+      <PropertyRef Name="MASACH" />
+    </Key>
+    <Property Name="MASACH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENSACH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NGUOIDICH" Type="nvarchar" MaxLength="50" />
+    <Property Name="NGONNGU" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SOTRANG" Type="int" Nullable="false" />
+    <Property Name="TRONGLUONG" Type="int" Nullable="false" />
+    <Property Name="NAMXUATBAN" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="KICHTHUOC" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MATACGIA" Type="int" Nullable="false" />
+    <Property Name="MATHELOAI" Type="int" />
+    <Property Name="MANXB" Type="int" />
+    <Property Name="TENANH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="GIANHAP" Type="int" Nullable="false" />
+    <Property Name="GIABAN" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TACGIA">
+    <Key>
+      <PropertyRef Name="MATACGIA" />
+    </Key>
+    <Property Name="MATACGIA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENTACGIA" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TAIKHOANADMIN">
+    <Key>
+      <PropertyRef Name="ID_ADMIN" />
+    </Key>
+    <Property Name="ID_ADMIN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SDT_ADMIN" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MATKHAU" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="THELOAI">
+    <Key>
+      <PropertyRef Name="MATHELOAI" />
+    </Key>
+    <Property Name="MATHELOAI" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TENTHELOAI" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TK_KHACHHANG">
+    <Key>
+      <PropertyRef Name="ID_KHACHHANG" />
+    </Key>
+    <Property Name="ID_KHACHHANG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HOTENKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SDT_KH" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="50" />
+    <Property Name="MATKHAU_KH" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_HDBAN">
+    <End Role="HOADONBAN" Type="Self.HOADONBAN" Multiplicity="1" />
+    <End Role="CT_HDBAN" Type="Self.CT_HDBAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONBAN">
+        <PropertyRef Name="MAHDBAN" />
+      </Principal>
+      <Dependent Role="CT_HDBAN">
+        <PropertyRef Name="MAHDBAN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HDNHAP">
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="1" />
+    <End Role="CT_HDNHAP" Type="Self.CT_HDNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADONNHAP">
+        <PropertyRef Name="MAHDNHAP" />
+      </Principal>
+      <Dependent Role="CT_HDNHAP">
+        <PropertyRef Name="MAHDNHAP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MAKH">
+    <End Role="TK_KHACHHANG" Type="Self.TK_KHACHHANG" Multiplicity="1" />
+    <End Role="HOADONBAN" Type="Self.HOADONBAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TK_KHACHHANG">
+        <PropertyRef Name="ID_KHACHHANG" />
+      </Principal>
+      <Dependent Role="HOADONBAN">
+        <PropertyRef Name="ID_KHACHHANG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MANCC">
+    <End Role="NHACC" Type="Self.NHACC" Multiplicity="0..1" />
+    <End Role="HOADONNHAP" Type="Self.HOADONNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACC">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="HOADONNHAP">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATG">
+    <End Role="TACGIA" Type="Self.TACGIA" Multiplicity="1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TACGIA">
+        <PropertyRef Name="MATACGIA" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MATACGIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MATHELOAI">
+    <End Role="THELOAI" Type="Self.THELOAI" Multiplicity="0..1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="THELOAI">
+        <PropertyRef Name="MATHELOAI" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MATHELOAI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MS">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="CT_HDBAN" Type="Self.CT_HDBAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="CT_HDBAN">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MSACH">
+    <End Role="SACH" Type="Self.SACH" Multiplicity="1" />
+    <End Role="CT_HDNHAP" Type="Self.CT_HDNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SACH">
+        <PropertyRef Name="MASACH" />
+      </Principal>
+      <Dependent Role="CT_HDNHAP">
+        <PropertyRef Name="MASACH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NXB">
+    <End Role="NXB" Type="Self.NXB" Multiplicity="0..1" />
+    <End Role="SACH" Type="Self.SACH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NXB">
+        <PropertyRef Name="MANXB" />
+      </Principal>
+      <Dependent Role="SACH">
+        <PropertyRef Name="MANXB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WebBanSach9ModelStoreContainer">
+    <EntitySet Name="HOADONBAN" EntityType="Self.HOADONBAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADONNHAP" EntityType="Self.HOADONNHAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHACC" EntityType="Self.NHACC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NXB" EntityType="Self.NXB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SACH" EntityType="Self.SACH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TACGIA" EntityType="Self.TACGIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOANADMIN" EntityType="Self.TAIKHOANADMIN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THELOAI" EntityType="Self.THELOAI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TK_KHACHHANG" EntityType="Self.TK_KHACHHANG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CT_HDBAN" EntityType="Self.CT_HDBAN" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CT_HDBAN].[MASACH] AS [MASACH], 
+    [CT_HDBAN].[MAHDBAN] AS [MAHDBAN], 
+    [CT_HDBAN].[SLBAN] AS [SLBAN], 
+    [CT_HDBAN].[KHUYENMAI] AS [KHUYENMAI]
+    FROM [dbo].[CT_HDBAN] AS [CT_HDBAN]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="CT_HDNHAP" EntityType="Self.CT_HDNHAP" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CT_HDNHAP].[MASACH] AS [MASACH], 
+    [CT_HDNHAP].[MAHDNHAP] AS [MAHDNHAP], 
+    [CT_HDNHAP].[SLNHAP] AS [SLNHAP]
+    FROM [dbo].[CT_HDNHAP] AS [CT_HDNHAP]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_HDBAN" Association="Self.FK_HDBAN">
+      <End Role="HOADONBAN" EntitySet="HOADONBAN" />
+      <End Role="CT_HDBAN" EntitySet="CT_HDBAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HDNHAP" Association="Self.FK_HDNHAP">
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAP" />
+      <End Role="CT_HDNHAP" EntitySet="CT_HDNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MAKH" Association="Self.FK_MAKH">
+      <End Role="TK_KHACHHANG" EntitySet="TK_KHACHHANG" />
+      <End Role="HOADONBAN" EntitySet="HOADONBAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MANCC" Association="Self.FK_MANCC">
+      <End Role="NHACC" EntitySet="NHACC" />
+      <End Role="HOADONNHAP" EntitySet="HOADONNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATG" Association="Self.FK_MATG">
+      <End Role="TACGIA" EntitySet="TACGIA" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MATHELOAI" Association="Self.FK_MATHELOAI">
+      <End Role="THELOAI" EntitySet="THELOAI" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MS" Association="Self.FK_MS">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="CT_HDBAN" EntitySet="CT_HDBAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MSACH" Association="Self.FK_MSACH">
+      <End Role="SACH" EntitySet="SACH" />
+      <End Role="CT_HDNHAP" EntitySet="CT_HDNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NXB" Association="Self.FK_NXB">
+      <End Role="NXB" EntitySet="NXB" />
+      <End Role="SACH" EntitySet="SACH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

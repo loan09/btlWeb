@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "addProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
+}
+
+<!-- Content Header -->
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="formAdd">
+                <form name="addProduct" onsubmit="return SubmitForm()">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="codebook">Mã sách</label>
+                            <input name="MaSach" type="text" class="form-control" id="codebook" placeholder="Mã sách" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="booktitle">Tên sách</label>
+                            <input name="TenSach" type="text" class="form-control" id="booktitle" placeholder="Tên sách" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Tác giả</label>
+                            <select class="form-control" id="author">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Category">Thể loại</label>
+                            <select class="form-control" id="Category">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Category">Nhà cung cấp</label>
+                            <select class="form-control" id="Category">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="publishingcompany">Nhà xuất bản</label>
+                            <select class="form-control" id="publishingcompany">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Người dịch</label>
+                            <input name="NguoiDich" type="text" class="form-control" id="price" placeholder="Người dịch" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Trọng lượng</label>
+                            <input name="TrongLuong" type="text" class="form-control" id="purchaseprice" placeholder="Trọng lượng" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Kích thước</label>
+                            <input name="KichThuoc" type="text" class="form-control" id="price" placeholder="Kích thước" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Số trang</label>
+                            <input name="SoTrang" type="text" class="form-control" id="purchaseprice" placeholder="Số trang" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Giá bán</label>
+                            <input name="GiaBan" type="text" class="form-control" id="price" placeholder="Giá bán" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Giá nhập</label>
+                            <input name="GiaNhap" type="text" class="form-control" id="purchaseprice" placeholder="Giá nhập" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group img">
+                            <label for="price" class="tittelImg">File ảnh: </label>
+                            <input type="file" class="form" id="Fileimg">
+                        </div>
+                    </div>
+                    <div class="row tittelSP">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="@Url.Action("Index")" class="btnPro">Back</a>
+                            <button class="btn btnPro" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<script src="~/Areas/Admin/Content/plugins/jquery/jquery.min.js"></script>
+<script src="~/Areas/Admin/Content/dist/js/bootstrap.js"></script>
+<script>
+    function SubmitForm() {
+        alert("Bạn đã thêm sản phẩm thành công!")
+        return true
+    }
+</script>

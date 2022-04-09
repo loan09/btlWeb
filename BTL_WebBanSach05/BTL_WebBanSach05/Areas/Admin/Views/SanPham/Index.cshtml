@@ -1,0 +1,254 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTacGia();
+        });
+        function GetTacGia() {
+            $.ajax({
+                url: 'https://localhost:44357/api/tacgia',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="">Tác giả</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATACGIA + '">' + reponse[i].TENTACGIA + '</option>';
+                    }
+                    document.getElementById('tacgia').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetNXB();
+        });
+        function GetNXB() {
+            $.ajax({
+                url: 'https://localhost:44357/api/nxb',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="">Nhà xuất bản</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MANXB + '">' + reponse[i].TENNXB + '</option>';
+                    }
+                    document.getElementById('NXB').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTheLoai();
+        });
+        function GetTheLoai() {
+            $.ajax({
+                url: 'https://localhost:44357/api/theloai',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="">Thể loại</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATHELOAI + '">' + reponse[i].TENTHELOAI + '</option>';
+                    }
+                    document.getElementById('Theloai').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+}
+
+<!-- Content Header -->
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 70px;">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row tittelSP">
+                <div class="col-sm-6">
+                    <h5 class="m-0 text-dark">Sản phẩm</h5>
+                </div>
+                <div class="col-sm-6">
+                    <a href="@Url.Action("addProduct")" class="btnAdd">Thêm sản phẩm</a>
+                </div>
+            </div>
+            <div class="row search">
+                <select name="cars" id="tacgia" class="cmbSearch">
+                </select>
+                <select name="cars" id="NXB" class="cmbSearch">
+                </select>
+                <select name="cars" id="Theloai" class="cmbSearch">
+                </select>
+                <div class="inpSearch">
+                    <input type="text" placeholder="Nhập tên hoặc mã sách" />
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="Table_wrapper">
+                <table class="table table-hover">
+                    <thead class="header">
+                        <tr>
+                            <th scope="col">Mã sách</th>
+                            <th scope="col">Hình ảnh</th>
+                            <th scope="col">Tên sách</th>
+                            <th scope="col">Tác giả</th>
+                            <th scope="col">Thể loại</th>
+                            <th scope="col">Nhà xuất bản</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>
+                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
+                            </td>
+                            <td>Tuổi trẻ đáng giá bao nhiêu</td>
+                            <td>Nguyễn Minh Ánh</td>
+                            <td>Văn học</td>
+                            <td>NXB Văn học</td>
+                            <td>10</td>
+                            <td class="row">
+                                <div class="col-sm-4 add">
+                                    <a href="@Url.Action("CTSanPham")"><i class="nav-icon fas fa-book"></i></a>
+                                </div>
+                                <div class="col-sm-4 edit">
+                                    <a href="@Url.Action("addProduct")"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="col-sm-4 delete">
+                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>
+                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
+                            </td>
+                            <td>Tôi thấy hoa vàng trên cỏ xanh</td>
+                            <td>Nhật Lan</td>
+                            <td>Văn học</td>
+                            <td>NXB Tuổi trẻ</td>
+                            <td>10</td>
+                            <td class="row">
+                                <div class="col-sm-4 add">
+                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
+                                </div>
+                                <div class="col-sm-4 edit">
+                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="col-sm-4 delete">
+                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>
+                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
+                            </td>
+                            <td>Mẹ kể con nghe</td>
+                            <td>Nguyễn Minh</td>
+                            <td>Truyện ngắn</td>
+                            <td>NXB Hà Nội</td>
+                            <td>20</td>
+                            <td class="row">
+                                <div class="col-sm-4 add">
+                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
+                                </div>
+                                <div class="col-sm-4 edit">
+                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="col-sm-4 delete">
+                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>
+                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
+                            </td>
+                            <td>Truyện kiều</td>
+                            <td>Nguyễn Du</td>
+                            <td>Văn học</td>
+                            <td>NXB TP.HCM</td>
+                            <td>20</td>
+                            <td class="row">
+                                <div class="col-sm-4 add">
+                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
+                                </div>
+                                <div class="col-sm-4 edit">
+                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="col-sm-4 delete">
+                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>
+                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
+                            </td>
+                            <td>Một thời để nhớ</td>
+                            <td>Nhật Lan</td>
+                            <td>Tiểu thuyết</td>
+                            <td>NXB Tuổi trẻ</td>
+                            <td>20</td>
+                            <td class="row">
+                                <div class="col-sm-4 add">
+                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
+                                </div>
+                                <div class="col-sm-4 edit">
+                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
+                                </div>
+                                <div class="col-sm-4 delete">
+                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="Pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);"><<</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">>></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->

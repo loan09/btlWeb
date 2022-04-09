@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "CTKhachHang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_customer.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/style/styleChiTietKH.css" rel="stylesheet" />
+
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 tittelKH">
+                <div class="col-sm-6 tittel">
+                    <h5 class="m-0 text-dark">Thông tin khách hàng</h5>
+                </div>
+                <!-- tim kiem theo mã hóa đơn -->
+                <div class="col-sm-6">
+                    <div class="inpSearch">
+                        <input type="text" placeholder="Nhập mã hóa đơn mua hàng" />
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row Contact">
+                <div class="col-sm-2 contactHeader">
+                    <p>Mã khách hàng: </p>
+                    <p>Tên khách hàng: </p>
+                    <p>Số điện thoại: </p>
+                    <p>Địa chỉ: </p>
+                </div>
+                <div class="col-sm-10">
+                    <p>023263223823672</p>
+                    <p>Trần Minh Phương</p>
+                    <p>0397281648</p>
+                    <p>Cầu giấy, Hà Nội</p>
+                </div>
+            </div>
+            <div class="row mb-2 tittelKH">
+                <div class="col-sm-6 tittel">
+                    <h5 class="m-0 text-dark">Lịch sử mua hàng</h5>
+                </div>
+            </div>
+            <div class="Table_wrapper">
+                <table class="table table-hover">
+                    <thead class="header">
+                        <tr>
+                            <th scope="col">Mã hóa đơn</th>
+                            <th scope="col">Thời gian</th>
+                            <th scope="col">Tổng cộng</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>10-02-2022</td>
+                            <td>100.000</td>
+                            <td>Hoàn thành</td>
+                            <td><a href="@Url.Action("CTHoaDon_KH")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>10-02-2022</td>
+                            <td>200.000</td>
+                            <td>Hoàn thành</td>
+                            <td><a href="@Url.Action("CTHoaDon_KH")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>10-02-2022</td>
+                            <td>150.000</td>
+                            <td>Hoàn thành</td>
+                            <td><a href="@Url.Action("CTHoaDon_KH")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>10-02-2022</td>
+                            <td>300.000</td>
+                            <td>Hoàn thành</td>
+                            <td><a href="./ChiTietHD_KH.html" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>10-02-2022</td>
+                            <td>50.000</td>
+                            <td>Hoàn thành</td>
+                            <td><a href="./ChiTietHD_KH.html" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row back">
+                <div class="col-sm-6">
+                </div>
+                <div class="col-sm-6">
+                    <a href="@Url.Action("Index")" class="btnPro">Back</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->

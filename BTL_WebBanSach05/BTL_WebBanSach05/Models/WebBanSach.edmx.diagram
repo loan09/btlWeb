@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6e09d1e30e014bd6bf85c65f3f028fec" Name="Diagram1">
+        <EntityTypeShape EntityType="WebBanSach9Model.HOADONBAN" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.HOADONNHAP" Width="1.5" PointX="3" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.NHACC" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.NXB" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.SACH" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.TACGIA" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.TAIKHOANADMIN" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.THELOAI" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.TK_KHACHHANG" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.CT_HDBAN" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebBanSach9Model.CT_HDNHAP" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="WebBanSach9Model.FK_HDBAN" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MAKH" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_HDNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MANCC" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_NXB" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MATG" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MATHELOAI" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MS" ManuallyRouted="false" />
+        <AssociationConnector Association="WebBanSach9Model.FK_MSACH" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

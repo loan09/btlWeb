@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_customer.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/style/styleKH.css" rel="stylesheet" />
+<!-- Content Header -->
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 tittelKH">
+                <div class="col-sm-6 tittel">
+                    <h5 class="m-0 text-dark">Khách hàng</h5>
+                </div>
+                <!-- tim kiem theo ten, sdt -->
+                <div class="col-sm-6">
+                    <div class="inpSearch">
+                        <input type="text" placeholder="Nhập mã, tên hoặc số điện thoại" />
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="Table_wrapper">
+                <table class="table table-hover">
+                    <thead class="header">
+                        <tr>
+                            <th scope="col">Mã khách hàng</th>
+                            <th scope="col">Tên khách hàng</th>
+                            <th scope="col">Số điện thoại</th>
+                            <th scope="col">Địa chỉ</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>0123467289</td>
+                            <td>Thanh Xuân - Hà Nội</td>
+                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>0398378265</td>
+                            <td>Thanh Xuân - Hà Nội</td>
+                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Larry</td>
+                            <td>0398378265</td>
+                            <td>Cầu giấy - Hà Nội</td>
+                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">4</th>
+                            <td>Larry</td>
+                            <td>0398378265</td>
+                            <td>Cầu giấy - Hà Nội</td>
+                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">5</th>
+                            <td>Larry</td>
+                            <td>0398378265</td>
+                            <td>Cầu giấy - Hà Nội</td>
+                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="Pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);"><<</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+                    <li class="page-item"><a class="page-link" href="javascript:void(0);">>></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<script src="~/Areas/Admin/Content/plugins/jquery/jquery.min.js"></script>
+<script src="~/Areas/Admin/Content/dist/js/bootstrap.js"></script>
+
+<script>
+    function deleteFunc() {
+        let text = "Bạn có muốn xóa sản phẩm này không?";
+        if (confirm(text) == true) {
+            alert("Bạn đã xóa sản phẩm thành công!");
+            return true
+        } else {
+            return false
+        }
+    }
+</script>

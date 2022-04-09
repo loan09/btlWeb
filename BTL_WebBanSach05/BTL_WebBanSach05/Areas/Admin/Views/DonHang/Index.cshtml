@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_donhang.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/style/styleDH.css" rel="stylesheet" />
+
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6 tittel">
+                    <h5 class="m-0 text-dark">Đơn hàng</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <input class="form-control form-control-navbar" type="search" placeholder="Tìm theo mã đơn hàng" aria-label="Search">
+            </div>
+            <div class="col-sm-3">
+                <input class="form-control form-control-navbar" type="search" placeholder="Tìm theo giá" aria-label="Search">
+            </div>
+            <div class="col-sm-4">
+                <input class="form-control form-control-navbar" type="search" placeholder="Tìm theo số hàng" aria-label="Search">
+            </div>
+            <button class="btn btn-navbar" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+    <div>
+        <table class="content-table table-hover">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã đơn hàng</th>
+                    <th>Ngày lập đơn</th>
+                    <th>Mã khách hàng</th>
+                    <th>Giá bán</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>000001</td>
+                    <td>22/2/2022</td>
+                    <td>dcode1311</td>
+                    <td>100.000 đ</td>
+                    <td>Đang giao hàng</td>
+                    <td><a href="@Url.Action("CTDonHang")" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>000002</td>
+                    <td>22/2/2022</td>
+                    <td>Students5431</td>
+                    <td>100.000 đ</td>
+                    <td>Đang giao hàng</td>
+                    <td><a href="@Url.Action("CTDonHang")" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>000003</td>
+                    <td>22/2/2022</td>
+                    <td>dcode2313</td>
+                    <td>100.000 đ</td>
+                    <td>Đang giao hàng</td>
+                    <td><a href="@Url.Action("CTDonHang")" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>000004</td>
+                    <td>22/2/2022</td>
+                    <td>dcode1311</td>
+                    <td>100.000 đ</td>
+                    <td>Đang giao hàng</td>
+                    <td><a href="@Url.Action("CTDonHang")" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>000005</td>
+                    <td>22/2/2022</td>
+                    <td>Students5431</td>
+                    <td>100.000 đ</td>
+                    <td>Đang giao hàng</td>
+                    <td><a href="./ChiTietDonHang.html" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>000006</td>
+                    <td>22/2/2022</td>
+                    <td>dcode2313</td>
+                    <td>100.000 đ</td>
+                    <td>Hoàn thành</td>
+                    <td><a href="./ChiTietDonHang.html" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>000007</td>
+                    <td>22/2/2022</td>
+                    <td>dcode1311</td>
+                    <td>100.000 đ</td>
+                    <td>Hoàn thành</td>
+                    <td><a href="./ChiTietDonHang.html" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>000008</td>
+                    <td>22/2/2022</td>
+                    <td>Students5431</td>
+                    <td>100.000 đ</td>
+                    <td>Hoàn thành</td>
+                    <td><a href="./ChiTietDonHang.html" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>000009</td>
+                    <td>22/2/2022</td>
+                    <td>dcode2313</td>
+                    <td>100.000 đ</td>
+                    <td>Hoàn thành</td>
+                    <td><a href="./ChiTietDonHang.html" class="ChiTiet">Xem chi tiết</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="Pagination">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="javascript:void(0);"><<</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0);">>></a></li>
+        </ul>
+    </div>
+</div>
+

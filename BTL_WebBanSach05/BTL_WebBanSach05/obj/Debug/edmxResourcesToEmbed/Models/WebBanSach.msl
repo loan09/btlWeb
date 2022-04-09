@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebBanSach9ModelStoreContainer" CdmEntityContainer="WebBanSach9Entities">
+    <EntitySetMapping Name="HOADONBANs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.HOADONBAN">
+        <MappingFragment StoreEntitySet="HOADONBAN">
+          <ScalarProperty Name="MAHDBAN" ColumnName="MAHDBAN" />
+          <ScalarProperty Name="NGAYLAPHDBAN" ColumnName="NGAYLAPHDBAN" />
+          <ScalarProperty Name="ID_KHACHHANG" ColumnName="ID_KHACHHANG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONNHAPs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.HOADONNHAP">
+        <MappingFragment StoreEntitySet="HOADONNHAP">
+          <ScalarProperty Name="MAHDNHAP" ColumnName="MAHDNHAP" />
+          <ScalarProperty Name="NGAYLAPHDNHAP" ColumnName="NGAYLAPHDNHAP" />
+          <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHACCs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.NHACC">
+        <MappingFragment StoreEntitySet="NHACC">
+          <ScalarProperty Name="MANCC" ColumnName="MANCC" />
+          <ScalarProperty Name="TENNCC" ColumnName="TENNCC" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NXBs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.NXB">
+        <MappingFragment StoreEntitySet="NXB">
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="TENNXB" ColumnName="TENNXB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SACHes">
+      <EntityTypeMapping TypeName="WebBanSach9Model.SACH">
+        <MappingFragment StoreEntitySet="SACH">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+          <ScalarProperty Name="NGUOIDICH" ColumnName="NGUOIDICH" />
+          <ScalarProperty Name="NGONNGU" ColumnName="NGONNGU" />
+          <ScalarProperty Name="SOTRANG" ColumnName="SOTRANG" />
+          <ScalarProperty Name="TRONGLUONG" ColumnName="TRONGLUONG" />
+          <ScalarProperty Name="NAMXUATBAN" ColumnName="NAMXUATBAN" />
+          <ScalarProperty Name="KICHTHUOC" ColumnName="KICHTHUOC" />
+          <ScalarProperty Name="MATACGIA" ColumnName="MATACGIA" />
+          <ScalarProperty Name="MATHELOAI" ColumnName="MATHELOAI" />
+          <ScalarProperty Name="MANXB" ColumnName="MANXB" />
+          <ScalarProperty Name="TENANH" ColumnName="TENANH" />
+          <ScalarProperty Name="GIANHAP" ColumnName="GIANHAP" />
+          <ScalarProperty Name="GIABAN" ColumnName="GIABAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TACGIAs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.TACGIA">
+        <MappingFragment StoreEntitySet="TACGIA">
+          <ScalarProperty Name="MATACGIA" ColumnName="MATACGIA" />
+          <ScalarProperty Name="TENTACGIA" ColumnName="TENTACGIA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANADMINs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.TAIKHOANADMIN">
+        <MappingFragment StoreEntitySet="TAIKHOANADMIN">
+          <ScalarProperty Name="ID_ADMIN" ColumnName="ID_ADMIN" />
+          <ScalarProperty Name="SDT_ADMIN" ColumnName="SDT_ADMIN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THELOAIs">
+      <EntityTypeMapping TypeName="WebBanSach9Model.THELOAI">
+        <MappingFragment StoreEntitySet="THELOAI">
+          <ScalarProperty Name="MATHELOAI" ColumnName="MATHELOAI" />
+          <ScalarProperty Name="TENTHELOAI" ColumnName="TENTHELOAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TK_KHACHHANG">
+      <EntityTypeMapping TypeName="WebBanSach9Model.TK_KHACHHANG">
+        <MappingFragment StoreEntitySet="TK_KHACHHANG">
+          <ScalarProperty Name="ID_KHACHHANG" ColumnName="ID_KHACHHANG" />
+          <ScalarProperty Name="HOTENKH" ColumnName="HOTENKH" />
+          <ScalarProperty Name="SDT_KH" ColumnName="SDT_KH" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="MATKHAU_KH" ColumnName="MATKHAU_KH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_HDBAN">
+      <EntityTypeMapping TypeName="WebBanSach9Model.CT_HDBAN">
+        <MappingFragment StoreEntitySet="CT_HDBAN">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAHDBAN" ColumnName="MAHDBAN" />
+          <ScalarProperty Name="SLBAN" ColumnName="SLBAN" />
+          <ScalarProperty Name="KHUYENMAI" ColumnName="KHUYENMAI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_HDNHAP">
+      <EntityTypeMapping TypeName="WebBanSach9Model.CT_HDNHAP">
+        <MappingFragment StoreEntitySet="CT_HDNHAP">
+          <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+          <ScalarProperty Name="MAHDNHAP" ColumnName="MAHDNHAP" />
+          <ScalarProperty Name="SLNHAP" ColumnName="SLNHAP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

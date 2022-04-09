@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "CTDonHang";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_donhang.cshtml";
+}
+
+<link href="~/Areas/Admin/Content/style/styleDH.css" rel="stylesheet" />
+
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <!-- Content header -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6 tittel">
+                    <h5 class="m-0 text-dark">Chi tiết đơn hàng</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <i>Ngày bán: 12/2/2022</i>
+            </div>
+            <div class="col-sm-3">
+                <i>Mã khách: 1222022</i>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <i>Mã đơn hàng: 000002</i>
+            </div>
+            <div class="col-sm-3">
+                <i>Mã NVBH: 1022</i>
+            </div>
+        </div>
+    </div>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên sách</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Harry Porter</td>
+                <td>12$</td>
+                <td>1</td>
+                <td>12$</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Siêu nhân gao</td>
+                <td>2$</td>
+                <td>2</td>
+                <td>4$</td>
+            </tr>
+            <tr class="active-row">
+                <td></td>
+                <td>Tổng tiền thanh toán</td>
+                <td></td>
+                <td></td>
+                <td>16$</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
