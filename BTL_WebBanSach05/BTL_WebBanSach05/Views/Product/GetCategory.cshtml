@@ -1,0 +1,4 @@
+﻿@foreach(var item in ViewBag.Category)
+{
+    <a class="nav-link text-dark" href="@Url.Action("ProductByCategory","Product", new {@MATHELOAI = item.MATHELOAI})">@item.TENTHELOAI</a>
+}

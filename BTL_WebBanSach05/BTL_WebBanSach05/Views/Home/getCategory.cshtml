@@ -1,0 +1,12 @@
+﻿@using BTL_WebBanSach05.Models
+@model List<THELOAI>
+
+@{  
+    
+    foreach (var item in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <a class="dropdown-item sub-menu" href="@Url.Action("ProductByCategory","Product", new {@MATHELOAI = item.MATHELOAI})">@item.TENTHELOAI</a>
+        </div>
+    }
+}

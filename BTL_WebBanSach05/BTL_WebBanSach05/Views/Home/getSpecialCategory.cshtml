@@ -1,0 +1,29 @@
+﻿@using BTL_WebBanSach05.Models
+@model List<THELOAI>
+
+@{ foreach (var item in Model)
+    {
+        <br>
+        <br>
+        <div class="container border border-warning ">
+            <h3 class="text-warning loaisach">@item.TENTHELOAI</h3>
+            <hr>
+            <div class="tab-content">
+                <div id="home" class=" container tab-pane active ">
+                    <div class="row">
+                        @Html.Action("SpecialBook", "Home", new { @matheloai = item.MATHELOAI })
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col text-center"><a href="@Url.Action("ProductByCategory","Product",new {@MATHELOAI = item.MATHELOAI})" class="btn btn-danger btn-lg">Xem thêm</a></div>                
+            </div>
+        </div>
+        <br>
+        <br>
+    }
+
+
+}

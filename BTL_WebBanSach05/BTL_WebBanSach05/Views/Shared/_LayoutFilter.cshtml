@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "_LayoutFilter";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb text-dark">
+        <li class="breadcrumb-item"><a href="#" class="text-dark">Home</a></li>
+        <li class="breadcrumb-item"><a href="#" class="text-dark">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+
+<br>
+<div class="locsp">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-sm-12">
+                <ul>
+                    Thể loại
+                    @Html.Action("GetCategory","Product")
+                </ul>
+                <hr>
+                <ul>
+                    Nhà xuất bản
+                    @Html.Action("GetNXB", "Product")
+
+                </ul>
+            </div>
+            <div class="col-lg-9 col-sm-12 ">
+                <br>
+                <div class="row">
+                    <div class="col-2 h6">Sắp xếp theo:</div>
+                    <div class="col-lg-4 col-sm-5">
+                        <select class="browser-default custom-select">
+                            <option selected="">Bán chạy tuần</option>
+                            <option value="1">Bán chạy tháng</option>
+                            <option value="2">Bán chạy năm</option>
+                            <option value="3">Mới nhất</option>
+                        </select>
+                    </div>
+                </div>
+                @RenderBody()
+            </div>
+            </div>
+
+            
+        </div>
+        </div>
+
+        </div>
+    </div>
+<br>
+<br>
+

@@ -1,0 +1,16 @@
+﻿@using BTL_WebBanSach05.Models
+@model List<SACH>
+
+@{
+    if (Model.Count > 0) {
+    foreach (var item in Model)
+    {
+        @Html.Action("PreProduc","Product",new { @MASACH = item.MASACH})
+    }
+
+    }
+    else
+    {
+    <p>&nbsp &nbsp Chưa có sản phẩm thuộc thể loại này!</p>
+    }
+}

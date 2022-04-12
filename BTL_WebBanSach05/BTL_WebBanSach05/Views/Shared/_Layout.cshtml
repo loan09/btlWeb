@@ -1,41 +1,116 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <script src="https://kit.fontawesome.com/14b9d4ac4a.js" crossorigin="anonymous"></script>
+    <title>Home</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+    <!-- Nav-bar -->
+    @using (Html.BeginForm("ResultSearch", "Search", FormMethod.Post))
+    {
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-warning sticky-top">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span><span class="sr-only">(current)</span>
+            </button>
+            <div class="navbar-brand">
+                <a href="@Url.Action("Index","Home")"><img src="~/Image/layout/fahasa-logo.png" alt=""></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+            <div class="collapse navbar-collapse bg-warning" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle bg-warning border border-warning" href="#" id="navbarDropdown">
+                            Danh mục sách
+                        </a>
+                        <div class="dropdown-content">
+                            <div class="container">
+                                @Html.Action("getCategory", "Home")
+                            </div>
+                        </div>
+                    </li>
+
                 </ul>
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
+
+            <form class="form-inline my-1 my-lg-0 col-lg-3 bg-warning">
+                @Html.TextBox("txtKeyWord", "", htmlAttributes: new { @class = "form-control mr-sm-2 col-lg-5 col-10 text-left border-danger", @type = "search", @placeholder = "Điền tên sách" })
+                <button type="submit" class="btn btn-outline-danger my-2 my-sm-2 "><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="text-right bg-warning ">
+                <a href="@Url.Action("Cart","Cart")"><i class="fa-solid fa-cart-shopping bgicon fa-2xl bg-warning "><span class="badge badge-danger badge-pill">@Html.Action("CartPartial", "Cart")</span></i></a>
+                <a href="./dangnhap.html"><i class="fa-solid fa-right-to-bracket bgicon fa-2xl bg-warning "></i></a>
+            </div>
+        </nav>
+
+    }
+    <br>
+
+    <div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <br>
+    <br>
+
+    <!-- footer -->
+    <div class="container-fluid bg-dark text-light">
+        <div class="row footer">
+            <ul class="col-lg-4 col-md-4 col-sm-12">
+                Dịch vụ
+                <li><a class="nav-link text-light" href="">Điều khoản sử dụng</a></li>
+                <li><a class="nav-link text-light" href="">Chính sách bảo mật</a></li>
+                <li><a class="nav-link text-light" href="">Giới thiệu</a></li>
+            </ul>
+            <ul class="col-lg-4 col-md-4 col-sm-12">
+                Hỗ trợ
+                <li><a class="nav-link text-light" href="">Chính sách đổi - trả - hoàn tiền</a></li>
+                <li><a class="nav-link text-light" href="">Phương thức thanh toán</a> </li>
+                <li><a class="nav-link text-light" href="">Hình thức vận chuyển</a></li>
+            </ul>
+            <ul class="col-lg-4 col-md-4 col-sm-12">
+                Liên hệ
+                <li><a class="nav-link text-light" href=""><i class="fa-solid fa-phone-flip"></i>0123456789</a></li>
+                <li><a class="nav-link text-light" href=""><i class="fa-solid fa-envelope"></i> abcxyz@gmail.com </a></li>
+                <li><a class="nav-link text-light" href=""><i class="fa-solid fa-location-dot"></i> Số 3 - Cầu Giấy - Đống Đa - Hà Nội </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script>
+        $('input.input-qty').each(function () {
+            var $this = $(this),
+                qty = $this.parent().find('.is-form'),
+                min = Number($this.attr('min')),
+                max = Number($this.attr('max'))
+            if (min == 0) {
+                var d = 0
+            } else d = min
+            $(qty).on('click', function () {
+                if ($(this).hasClass('minus')) {
+                    if (d > min) d += -1
+                } else if ($(this).hasClass('plus')) {
+                    var x = Number($this.val()) + 1
+                    if (x <= max) d += 1
+                }
+                $this.attr('value', d).val(d)
+            })
+        })
+    </script>
+    <script>
+        function SubmitForm() {
+            alert("Bạn đã đặt hàng thành công!")
+            return true
+        }
+    </script>
 </body>
 </html>

@@ -1,0 +1,141 @@
+﻿@using BTL_WebBanSach05.Models
+@model List<Cart>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+
+<div class="h3 text-center">Giỏ hàng</div>
+<br>
+
+<div class="container">
+    <div class=" giohangtitle">
+        <div class="row">
+            <div class="col-5">Sản phẩm</div>
+            <div class="col-3">Số lượng</div>
+            <div class="col-2">Thành tiền</div>
+            <div class="col-2">Thao tác</div>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        using (Html.BeginForm("updateCart", "Cart", new { @MASACH = item.MASACH }, FormMethod.Post))
+        {
+            <div class="hangmua">
+                <div class="row">
+                    <div class="col-5">
+                        <div class="col-6 imgSP"><a href="@Url.Action("DetailProduct","Product",new {@MASACH = item.MASACH})"><img src="@Url.Content("~/Image/book/"+@item.TENANH)" alt=""></a></div>
+                        <div class="col-5" style="text-align: center; margin-top: 10px; ">@item.TENSACH</div>
+                    </div>
+                    <div class="col-3 buttons_added">
+                        <input class="minus is-form" type="button" value="-">
+                        @Html.TextBox("txtSoLuong", @item.SOLUONG, new { @class = "input-qty", @max = "99", @min = "1", @type = "number", @value = 2 })
+                        <input class="plus is-form" type="button" value="+">
+                        <button class="btn bg-warning text-light is-form" type="submit">Lưu</button>
+                    </div>
+                    <div class="col-2">@String.Format("{0:0,0}", @item.THANHTIEN) đ</div>
+                    <div class="col-2">@Html.ActionLink(".", "DeleteCar", new { @MASACH = item.MASACH }, htmlAttributes: new { @class = "fa-solid fa-trash-can text-dark" })</div>
+                </div>
+            </div>
+        }
+    }
+    <div class="tongtien">
+        <div class="row">
+            <div class="col-5">Tổng</div>
+            <div class="col-3">@ViewBag.TongSoLuong</div>
+            <div class="col-4">@String.Format("{0:0,0}", ViewBag.TongTien) đ</div>
+        </div>
+    </div>
+    <br>
+    @using (Html.BeginForm("Payment", "Cart", FormMethod.Post))
+    {
+        <div data-toggle="modal" data-target="#myModal" class="col-3 btn btn-warning btn-lg float-right h4 " style="margin-right:10px">
+         Đặt hàng
+        </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="tittelModal">
+                    <h5>Thông tin đơn hàng</h5>
+                </div>
+                <div class="container">
+                    <form action="">
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Họ tên:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">Nguyễn Minh Phương</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Số điện thoại:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">0382678934</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Địa chỉ:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">Số 3, Cầu Giấy, Hà Nội</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Tên sản phẩm:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">Chim sẻ đi nắng</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Số lượng:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">10 (quyển)</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Thành tiền:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">100.000 đ</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="fname">Hình thức thanh toán:</label>
+                            </div>
+                            <div class="col-6">
+                                <label for="fname">Thanh toán khi nhận hàng</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <input type="submit" value="Đặt hàng" onclick="SubmitForm()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    }
+</div>
+<br>
+

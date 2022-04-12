@@ -1,0 +1,17 @@
+﻿@using BTL_WebBanSach05.Models
+@model SACH
+
+<div class="btn card col-lg-3 col-sm-6 border-white">
+    <a href="@Url.Action("DetailProduct","Product", new {@MASACH=@Model.MASACH})" class="card-link">
+        <img class="card-img-top" src="@Url.Content("~/Image/book/"+@Model.TENANH)" alt="@Model.TENSACH" width="200" height="250">
+        <div class="card-body">
+            <h5 class="text-dark">@Model.TENSACH</h5>
+            <h5 class="text-danger">@String.Format("{0:0,0}", Model.GIABAN) đ</h5>
+            @using (Html.BeginForm("addCart", "Cart", new { @MASACH = Model.MASACH, @url = Request.Url.ToString(), @SoLuong = 1 }))
+            {
+                <button type="submit" class="text-center btn btn-warning text-white">Thêm giỏ hàng</button>
+            }
+        </div>
+    </a>
+</div>
+        

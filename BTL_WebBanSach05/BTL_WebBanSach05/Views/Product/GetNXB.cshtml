@@ -1,0 +1,4 @@
+﻿@foreach (var item in ViewBag.NXB)
+{
+    <a class="nav-link text-dark" href="@Url.Action("ProductByNXB","Product" , new {@MANXB = item.MANXB})">@item.TENNXB</a>
+}

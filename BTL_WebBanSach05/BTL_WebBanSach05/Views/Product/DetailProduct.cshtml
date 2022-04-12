@@ -1,0 +1,67 @@
+﻿@using BTL_WebBanSach05.Models
+@model SACH
+
+@{
+    ViewBag.Title = "DetailProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- breadcrumb -->
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb text-dark">
+        <li class="breadcrumb-item"><a href="#" class="text-dark">Home</a></li>
+        <li class="breadcrumb-item"><a href="#" class="text-dark">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+</nav>
+<!-- body -->
+<div class="chitietsp">
+    <div class="container">
+
+        @using (Html.BeginForm("addCart", "Cart", new { @MASACH = Model.MASACH, @url = Request.Url.ToString() }))
+        {
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4 imgCTSPP">
+                <img src="@Url.Content("~/Image/book/" + @Model.TENANH)" alt="" class="mx-auto d-block anhchitiet">
+                <br>
+                <div class="offset-3 col">
+                    <div class="row"><br></div>
+
+                    <button type="submit" class="text-center btn btn-danger btn-lg row">Thêm giỏ hàng</button>
+
+                    <div class="row"><br></div>
+                    <button type="submit" class=" text-center btn btn-outline-danger btn-lg row">Thanh toán ngay</button>
+                </div>
+            </div>
+            <div class="offset-1 col-sm-6 ">
+                <h2 class="tensp">@Model.TENSACH</h2>
+                <li>Tác giả : @Model.TACGIA.TENTACGIA</li>
+                <li>Thể loại : @Model.THELOAI.TENTHELOAI</li>
+                <li>Nhà xuất bản: @Model.NXB.TENNXB</li>
+                <li>Ngôn ngữ : @Model.NGONNGU</li>
+                <li>Người dịch : @Model.NGUOIDICH</li>
+                <li>Trọng lượng : @Model.TRONGLUONG gram</li>
+                <li>Số trang : @Model.SOTRANG trang</li>
+                <li>Kích thước : @Model.KICHTHUOC</li>
+
+                <p class="gia">@String.Format("{0:0,0}", Model.GIABAN) đ</p>
+                <br>
+                <li>Chính sách đổi trả trong 30 ngày</li>
+                <li>Số lượng: </li>
+                <div class="buttons_added">
+                    <input class="minus is-form" type="button" value="-">
+                    @Html.TextBox("txtSoLuong", "1", new { @class = "input-qty", @max = "99", @min = "1", @type = "number", @value = "1" })
+                    <input class="plus is-form" type="button" value="+">
+                </div>
+            </div>
+        </div>
+                }
+                <br>
+            </div>
+        
+<br>
+<br>
+
+
+
+

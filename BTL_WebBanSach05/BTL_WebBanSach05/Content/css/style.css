@@ -1,0 +1,278 @@
+
+.dropdown{
+    position:  relative;
+    display: inline-block;
+}
+.main {
+    padding: 30px 0px;
+    background-color: lightgoldenrodyellow;
+}
+.navbar-brand a{
+    font-size: 30px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+.navbar-brand img{
+    width: 130px;
+    height: 35px;
+}
+#navbarDropdown{
+    font-size: 20px;
+    font-weight: bold;
+    border-width:20px ;
+}
+
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color:lightgoldenrodyellow;
+    width:70vw;
+    padding-bottom: 20px;
+    z-index: 1;
+}
+.sub-menu{
+    font-weight: bold;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    padding-top: 20px;
+}
+.dropdown:hover .dropdown-content{
+    display: block;
+}
+
+.form-control{
+    width: 100px;
+}
+
+a .fa-solid{
+    color: white;
+    padding:10px 10px;
+    padding-top: 25px;
+}
+.dropdown-content a:hover{
+    background-color: lightgoldenrodyellow;
+    color: #FFBF00;
+    font-weight: bold;
+    
+}
+.badge{  
+    font-size: 12px;
+}
+
+.loaisach{
+    margin: 10px 10px;
+}
+
+.footer{
+    padding: 30px 50px 30px 100px;
+}
+.footer ul{
+    font-size: 15px;
+}
+
+.footer ul li{
+    font-size: 15px;
+    /* padding-left: 20px; */
+    list-style: none;
+}
+.footer ul li a{
+    height: 50px;
+}
+.breadcrumb{
+    background: lightgoldenrodyellow;
+    padding-left: 5rem;
+    
+}
+.chitietsp .container{
+    background: lightgoldenrodyellow;
+    padding: 30px;
+}
+.tensp{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.anhchitiet{
+    height: 400px;
+    width: auto;
+    max-width: 400px;
+}
+.chitietsp li {
+    list-style: none;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.container .imgCTSPP img{
+    width: 250px;
+    height: 350px;
+
+}
+.gia{
+    color : brown;
+    font-weight:  bold;
+    margin-top: 30px;
+    font-size: 40px;
+}
+
+.nav-item{
+    padding:0px 10px;
+}
+
+.nav-pills .pill-1 .nav-link:not(.active){
+    background-color: lightgoldenrodyellow;
+    color: #FFBF00;
+
+}
+
+.nav-pills .pill-1 .nav-link{
+    background-color: #FFBF00;
+    color: white;
+}
+/* begin button tang giam */
+.buttons_added {
+    opacity:1;
+    display:inline-block;
+    display:-ms-inline-flexbox;
+    display:inline-flex;
+    white-space:nowrap;
+    vertical-align:top;
+    padding:1rem 0rem ;
+}
+.is-form {
+    overflow:hidden;
+    position:relative;
+    background-color:#f9f9f9;
+    height:3.0rem;
+    width:2.8rem;
+    padding:0;
+    text-shadow:1px 1px 1px #fff;
+    border:1px solid #ddd;
+}
+.is-form:focus,.input-text:focus {
+    outline:none;
+}
+.is-form.minus {
+    border-radius:8px 0 0 8px;
+}
+.is-form.plus {
+    border-radius:0 8px 8px 0;
+}
+.input-qty {
+    background-color:#fff;
+    height:3.0rem;
+    width: 3.8rem;
+    text-align:center;
+    font-size:1.2rem;
+    display:inline-block;
+    vertical-align:top;
+    margin:0;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    border-left:0;
+    border-right:0;
+    padding:0;
+}
+.input-qty::-webkit-outer-spin-button,.input-qty::-webkit-inner-spin-button {
+    -webkit-appearance:none;
+    margin:0;
+}
+/* end button tang giam */
+/*gio hang*/
+.giohangtitle{
+    font-size: 20px;
+    font-weight: bold;
+    padding :10px 30px;
+    background-color: lightgoldenrodyellow;
+    margin-bottom: 20px;
+}
+.hangmua{
+    background-color: lightgoldenrodyellow;
+    height: fit-content;
+    /* min-height: 300px; */
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+.tongtien{
+    background-color: lightgoldenrodyellow;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.imgSP img{
+    width: 150px;
+    height: 150px;
+}
+
+.tittelModal{
+    text-align: center;
+}
+  
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  .container {
+    border-radius: 5px;
+    padding: 10px;
+    overflow:hidden;
+  }
+  .container img{
+    width: 150px;
+    height: 200px;   
+}
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+/*end gio hang */
+
+
+
