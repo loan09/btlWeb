@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link href="~/Areas/Admin/Content/style/styleLogin.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="center">
+        <h1>Đăng ký</h1>
+        <form name="login" onsubmit="return validateForm()" action="@Url.Action("DangKyAdmin")">
+            <div class="txt_field">
+                <input name="sdt" type="text" required>
+                <span></span>
+                <label>Số điện thoại</label>
+            </div>
+            <div class="txt_field">
+                <input name="password" type="password" required>
+                <span></span>
+                <label>Mật khẩu</label>
+            </div>
+            <input type="submit" value="Đăng ký">
+            <div class="signup_link">
+                <a href="@Url.Action("DangNhapAdmin")">Quay lại</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            alert("Đăng ký thành công");
+            return true
+        }
+    </script>
+    <script>
+        function Register() {
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,4 +1,6 @@
-﻿
+﻿@using BTL_WebBanSach05.Models;
+@model List<SACH>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
@@ -82,11 +84,215 @@
             });
         }
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetSach();
+        });
+        function GetSach() {
+            var id = 0;
+            $.ajax({
+                url: "https://localhost:44357/api/sach",
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    let t = 0;
+                    for (var i = 0; i < len; ++i) {
+                        id = reponse[i].MaSanPham;
+                        table = table +
+                            '<th scope="row">' + reponse[i].MaSanPham + '</th>' +
+                            '<td><img src="https://localhost:44357/Areas/Admin/Image/' + reponse[i].TenAnh +'" class="imgProduct"></td>' +
+                            '<td>' + reponse[i].TenSanPham + '</td>' +
+                            '<td>' + reponse[i].TenTacGia + '</td>' +
+                            '<td>' + reponse[i].TheLoai + '</td>' +
+                            '<td>' + reponse[i].NXB + '</td>' +
+                            '<td class="row">' +
+                            '<div class="col-sm-4 add"><a href="https://localhost:44357/Admin/SanPham/CTSanPham/' + reponse[i].MaSanPham + '"><i class="nav-icon fas fa-book"></i></a></div>' +
+                            '<div class="col-sm-4 edit"><a href="https://localhost:44357/Admin/SanPham/UpdateSP/' + reponse[i].MaSanPham + '"><i class="fas fa-edit"></i></a></div>' +
+                            '<div class="col-sm-4 delete"><i onclick=" deleteKhachHang(' + reponse[i].MaSanPham + ')" class="fas fa-trash-alt"></i></div></td></tr>';
+                    }
+                    document.getElementById('sach').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function GetSachTG(maTG) {
+            $.ajax({
+                url: "https://localhost:44357/api/sach?maTG=" + maTG,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].MaSanPham + '</th>' +
+                            '<td><img src="https://localhost:44357/Areas/Admin/Image/' + reponse[i].TenAnh +'" class="imgProduct"></td>' +
+                            '<td>' + reponse[i].TenSanPham + '</td>' +
+                            '<td>' + reponse[i].TenTacGia + '</td>' +
+                            '<td>' + reponse[i].TheLoai + '</td>' +
+                            '<td>' + reponse[i].NXB + '</td>' +
+                            '<td class="row">' +
+                            '<div class="col-sm-4 add"><a href="https://localhost:44357/Admin/SanPham/CTSanPham/' + reponse[i].MaSanPham + '"><i class="nav-icon fas fa-book"></i></a></div>' +
+                            '<div class="col-sm-4 edit"><a href="https://localhost:44357/Admin/SanPham/UpdateSP/' + reponse[i].MaSanPham + '"><i class="fas fa-edit"></i></a></div>' +
+                            '<div class="col-sm-4 delete"><i onclick=" deleteKhachHang(' + reponse[i].MaSanPham + ')" class="fas fa-trash-alt"></i></div></td></tr>';
+                    }
+                    document.getElementById('sach').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("#tacgia").change(function () {
+            GetSachTG($(this).val());
+        });
+    </script>
+
+    <script type="text/javascript">
+        function GetSachNXB(maNXB) {
+            $.ajax({
+                url: "https://localhost:44357/api/sach?maNXB=" + maNXB,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].MaSanPham + '</th>' +
+                            '<td><img src="https://localhost:44357/Areas/Admin/Image/' + reponse[i].TenAnh +'" class="imgProduct"></td>' +
+                            '<td>' + reponse[i].TenSanPham + '</td>' +
+                            '<td>' + reponse[i].TenTacGia + '</td>' +
+                            '<td>' + reponse[i].TheLoai + '</td>' +
+                            '<td>' + reponse[i].NXB + '</td>' +
+                            '<td class="row">' +
+                            '<div class="col-sm-4 add"><a href="https://localhost:44357/Admin/SanPham/CTSanPham/' + reponse[i].MaSanPham + '"><i class="nav-icon fas fa-book"></i></a></div>' +
+                            '<div class="col-sm-4 edit"><a href="https://localhost:44357/Admin/SanPham/UpdateSP/' + reponse[i].MaSanPham + '"><i class="fas fa-edit"></i></a></div>' +
+                            '<div class="col-sm-4 delete"><i onclick=" deleteKhachHang(' + reponse[i].MaSanPham + ')" class="fas fa-trash-alt"></i></div></td></tr>';
+                    }
+                    document.getElementById('sach').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("#NXB").change(function () {
+            GetSachNXB($(this).val());
+        });
+    </script>
+
+    <script type="text/javascript">
+        function GetSachTL(maTL) {
+            $.ajax({
+                url: "https://localhost:44357/api/sach?maTL=" + maTL,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].MaSanPham + '</th>' +
+                            '<td><img src="https://localhost:44357/Areas/Admin/Image/' + reponse[i].TenAnh +'" class="imgProduct"></td>' +
+                            '<td>' + reponse[i].TenSanPham + '</td>' +
+                            '<td>' + reponse[i].TenTacGia + '</td>' +
+                            '<td>' + reponse[i].TheLoai + '</td>' +
+                            '<td>' + reponse[i].NXB + '</td>' +
+                            '<td class="row">' +
+                            '<div class="col-sm-4 add"><a href="https://localhost:44357/Admin/SanPham/CTSanPham/' + reponse[i].MaSanPham + '"><i class="nav-icon fas fa-book"></i></a></div>' +
+                            '<div class="col-sm-4 edit"><a href="https://localhost:44357/Admin/SanPham/UpdateSP/' + reponse[i].MaSanPham + '"><i class="fas fa-edit"></i></a></div>' +
+                            '<div class="col-sm-4 delete"><i onclick=" deleteKhachHang(' + reponse[i].MaSanPham + ')" class="fas fa-trash-alt"></i></div></td></tr>';
+                    }
+                    document.getElementById('sach').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("#Theloai").change(function () {
+            GetSachTL($(this).val());
+        });
+    </script>
+
+    <script type="text/javascript">
+        function GetSachSP(masp) {
+            $.ajax({
+                url: "https://localhost:44357/api/sach?masp=" + masp,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].MaSanPham + '</th>' +
+                            '<td><img src="https://localhost:44357/Areas/Admin/Image/' + reponse[i].TenAnh +'" class="imgProduct"></td>' +
+                            '<td>' + reponse[i].TenSanPham + '</td>' +
+                            '<td>' + reponse[i].TenTacGia + '</td>' +
+                            '<td>' + reponse[i].TheLoai + '</td>' +
+                            '<td>' + reponse[i].NXB + '</td>' +
+                            '<td class="row">' +
+                            '<div class="col-sm-4 add"><a href="https://localhost:44357/Admin/SanPham/CTSanPham/' + reponse[i].MaSanPham + '"><i class="nav-icon fas fa-book"></i></a></div>' +
+                            '<div class="col-sm-4 edit"><a href="https://localhost:44357/Admin/SanPham/UpdateSP/' + reponse[i].MaSanPham + '"><i class="fas fa-edit"></i></a></div>' +
+                            '<div class="col-sm-4 delete"><i onclick=" deleteKhachHang(' + reponse[i].MaSanPham + ')" class="fas fa-trash-alt"></i></div></td></tr>';
+                    }
+                    document.getElementById('sach').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("input[name='masp']").change(function () {
+            GetSachSP($(this).val());
+        });
+    </script>
+
+    <script type="text/javascript">
+        //Hàm lấy Thêm mới Khách hàng. Dùng $.ajax() thực hiện method HTTP POST
+        function deleteKhachHang(id) {
+            var url = 'https://localhost:44357/api/sach?id=' + id
+            $.ajax({
+                url: url,
+                method: 'DELETE',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                    alert("Xóa không thành công");
+                },
+                success: function (reponse) {
+                    console.log(reponse);
+                    alert("Xóa thành công");
+                    GetSach(); //Gọi đến hàm lấy dữ liệu lên bảng
+                }
+            });
+        }
+    </script>
 }
 
 <!-- Content Header -->
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 70px;">
-    <div class="content-header">
+    <div class="content-header" id="main_sp">
         <div class="container-fluid">
             <div class="row tittelSP">
                 <div class="col-sm-6">
@@ -104,138 +310,29 @@
                 <select name="cars" id="Theloai" class="cmbSearch">
                 </select>
                 <div class="inpSearch">
-                    <input type="text" placeholder="Nhập tên hoặc mã sách" />
+                    <input name="masp" type="text" placeholder="Nhập tên hoặc mã sách" />
                     <button class="btn btn-navbar" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
             </div>
+            <div id="main">
 
+            </div>
             <div class="Table_wrapper">
                 <table class="table table-hover">
                     <thead class="header">
                         <tr>
-                            <th scope="col">Mã sách</th>
-                            <th scope="col">Hình ảnh</th>
+                            <th scope="col">Mã</th>
+                            <th scope="col">Ảnh</th>
                             <th scope="col">Tên sách</th>
                             <th scope="col">Tác giả</th>
                             <th scope="col">Thể loại</th>
                             <th scope="col">Nhà xuất bản</th>
-                            <th scope="col">Số lượng</th>
                             <th scope="col">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>
-                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
-                            </td>
-                            <td>Tuổi trẻ đáng giá bao nhiêu</td>
-                            <td>Nguyễn Minh Ánh</td>
-                            <td>Văn học</td>
-                            <td>NXB Văn học</td>
-                            <td>10</td>
-                            <td class="row">
-                                <div class="col-sm-4 add">
-                                    <a href="@Url.Action("CTSanPham")"><i class="nav-icon fas fa-book"></i></a>
-                                </div>
-                                <div class="col-sm-4 edit">
-                                    <a href="@Url.Action("addProduct")"><i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="col-sm-4 delete">
-                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>
-                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
-                            </td>
-                            <td>Tôi thấy hoa vàng trên cỏ xanh</td>
-                            <td>Nhật Lan</td>
-                            <td>Văn học</td>
-                            <td>NXB Tuổi trẻ</td>
-                            <td>10</td>
-                            <td class="row">
-                                <div class="col-sm-4 add">
-                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
-                                </div>
-                                <div class="col-sm-4 edit">
-                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="col-sm-4 delete">
-                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>
-                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
-                            </td>
-                            <td>Mẹ kể con nghe</td>
-                            <td>Nguyễn Minh</td>
-                            <td>Truyện ngắn</td>
-                            <td>NXB Hà Nội</td>
-                            <td>20</td>
-                            <td class="row">
-                                <div class="col-sm-4 add">
-                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
-                                </div>
-                                <div class="col-sm-4 edit">
-                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="col-sm-4 delete">
-                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>
-                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
-                            </td>
-                            <td>Truyện kiều</td>
-                            <td>Nguyễn Du</td>
-                            <td>Văn học</td>
-                            <td>NXB TP.HCM</td>
-                            <td>20</td>
-                            <td class="row">
-                                <div class="col-sm-4 add">
-                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
-                                </div>
-                                <div class="col-sm-4 edit">
-                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="col-sm-4 delete">
-                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>
-                                <img src="~/Areas/Admin/Image/sp3.jpg" class="imgProduct" alt="User Image">
-                            </td>
-                            <td>Một thời để nhớ</td>
-                            <td>Nhật Lan</td>
-                            <td>Tiểu thuyết</td>
-                            <td>NXB Tuổi trẻ</td>
-                            <td>20</td>
-                            <td class="row">
-                                <div class="col-sm-4 add">
-                                    <a href="./ChiTietSP.html"><i class="nav-icon fas fa-book"></i></a>
-                                </div>
-                                <div class="col-sm-4 edit">
-                                    <a href="./addProduct.html"><i class="fas fa-edit"></i></a>
-                                </div>
-                                <div class="col-sm-4 delete">
-                                    <i onclick="deleteFunc()" class="fas fa-trash-alt"></i>
-                                </div>
-                            </td>
-                        </tr>
+                    <tbody id="sach">
                     </tbody>
                 </table>
             </div>
@@ -250,5 +347,10 @@
             </div>
         </div>
     </div>
+
+    <div id="main_item">
+
+    </div>
 </div>
 <!-- /.content-header -->
+<link href="~/Areas/Admin/Content/style/styleIndex.css" rel="stylesheet" />

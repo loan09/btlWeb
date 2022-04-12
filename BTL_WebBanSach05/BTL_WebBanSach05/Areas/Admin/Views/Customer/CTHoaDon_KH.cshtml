@@ -4,76 +4,83 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_customer.cshtml";
 }
 
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetKH();
+        });
+        function GetKH() {
+            var id = 0;
+            $.ajax({
+                url: "https://localhost:44357/api/khachhangapi?idDH=" + @ViewBag.idDH,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<div class="row tittelKH"><div class="col-sm-11 tittel"><h5>Chi tiết hóa đơn @ViewBag.idDH</h5></div><div class="col-sm-1 back"></div></div>';
+
+                    let t = 0;
+                    for (var i = 0; i < len; ++i) {
+                        t += reponse[i].giaban * reponse[i].SL;
+                        table = table +
+                            '<div class= "row Contact" >' +
+                            '<div class="col-sm-4" ></div >' +
+                            '<div class="col-sm-2 tittel">' +
+                            '<p>Mã hàng: </p>' +
+                            '<p>Tên hàng: </p>' +
+                            '<p>Số lượng: </p>' +
+                            '<p>Giá bán lẻ: </p>' +
+                            '</div > ' +
+                            '<div class="col-sm-3"> ' +
+                            '<p>' + reponse[i].MaSP + '</p>' +
+                            '<p>' + reponse[i].TenSP + '</p>' +
+                            '<p>' + reponse[i].SL + '</p>' +
+                            '<p>' + reponse[i].giaban + '</p>' +
+                            '</div>' +
+                            '<div class="col-sm-3"></div></div ><hr>';
+                    }
+
+                    table = table +
+                        '<div class="row Contact">' +
+                        '<div class="col-sm-4" >' +
+                        '</div >' +
+                        '<div class="col-sm-2 tittel">' +
+                        '<p style="font-weight: 800;">Tổng tiền: </p>' +
+                        '</div>' +
+                        '<div class="col-sm-3">' +
+                        '<p style="font-weight: 800;">' + t + '</p>' +
+                        '</div>' +
+                        '<div class="col-sm-3">' +
+                        '</div>' +
+                        '</div >' +
+                        '<div class="row back">' +
+                        '<div class="col-sm-6">' +
+                        '</div>' +
+                        '<div class="col-sm-6">' +
+                        '<a href="https://localhost:44357/Admin/Customer/" class="btnPro">Back</a>' +
+                        '</div>' +
+                        '</div>';
+
+                    document.getElementById('CT_HD').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+}
+
 <link href="~/Areas/Admin/Content/style/styleChiTietHD_KH.css" rel="stylesheet" />
 
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
     <div class="content-header">
-        <div class="container-fluid">
-            <div class="row tittelKH">
-                <div class="col-sm-11 tittel">
-                    <h5>Chi tiết hóa đơn 1</h5>
-                </div>
-                <div class="col-sm-1 back">
-                </div>
-            </div>
-            <div class="row Contact">
-                <div class="col-sm-4">
-                </div>
-                <div class="col-sm-2 tittel">
-                    <p>Mã hàng: </p>
-                    <p>Tên hàng: </p>
-                    <p>Số lượng: </p>
-                    <p>Giá bán lẻ: </p>
-                </div>
-                <div class="col-sm-3">
-                    <p>3223823672</p>
-                    <p>Truyện cổ tích</p>
-                    <p>2</p>
-                    <p>10.000đ</p>
-                </div>
-                <div class="col-sm-3">
-                </div>
-            </div>
-            <hr>
-            <div class="row Contact">
-                <div class="col-sm-4">
-                </div>
-                <div class="col-sm-2 tittel">
-                    <p>Mã hàng: </p>
-                    <p>Tên hàng: </p>
-                    <p>Số lượng: </p>
-                    <p>Giá bán lẻ: </p>
-                </div>
-                <div class="col-sm-2">
-                    <p>3223823672</p>
-                    <p>Truyện trinh thám</p>
-                    <p>1</p>
-                    <p>20.000đ</p>
-                </div>
-                <div class="col-sm-4">
-                </div>
-            </div>
-            <hr>
-            <div class="row Contact">
-                <div class="col-sm-4">
-                </div>
-                <div class="col-sm-2 tittel">
-                    <p style="font-weight: 800;">Tổng tiền: </p>
-                </div>
-                <div class="col-sm-3">
-                    <p style="font-weight: 800;">40.000đ</p>
-                </div>
-                <div class="col-sm-3">
-                </div>
-            </div>
+        <div class="container-fluid" id="CT_HD">
 
-            <div class="row back">
-                <div class="col-sm-6">
-                </div>
-                <div class="col-sm-6">
-                    <a href="@Url.Action("CTKhachHang")" class="btnPro">Back</a>
-                </div>
-            </div>
         </div>
     </div>
 </div>

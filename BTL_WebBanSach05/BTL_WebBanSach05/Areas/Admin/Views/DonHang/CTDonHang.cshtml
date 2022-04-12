@@ -4,6 +4,52 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_donhang.cshtml";
 }
 
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetKH();
+        });
+        function GetKH() {
+            var id = 0;
+            $.ajax({
+                url: "https://localhost:44357/api/khachhangapi?idDH=" + @ViewBag.MaDH,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    let t = 0;
+                    for (var i = 0; i < len; ++i) {
+                        t += reponse[i].giaban * reponse[i].SL;
+                        table = table +
+                            '<td>' + (i + 1) + '</td>' +
+                            '<td>' + reponse[i].TenSP + '</td>' +
+                            '<td>' + reponse[i].giaban + '</td>' +
+                            '<td>' + reponse[i].SL + '</td>' +
+                            '<td>' + (reponse[i].SL * reponse[i].giaban) + '</td></tr>';
+                    }
+
+                    table = table +
+                            '<tr class="active-row">' +
+                            '<td></td>' +
+                            '<td>Tổng tiền thanh toán</td>' +
+                            '<td></td>' +
+                            '<td></td>' +
+                            '<td>' + t + '</td>' +
+                            '</tr>';
+
+                    document.getElementById('ct_dh').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+}
+
 <link href="~/Areas/Admin/Content/style/styleDH.css" rel="stylesheet" />
 
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
@@ -17,21 +63,27 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container" style="margin-left: 5%">
         <div class="row">
             <div class="col-md-3">
-                <i>Ngày bán: 12/2/2022</i>
+                <i>Mã đơn hàng: @ViewBag.MaDH</i>
+            </div>
+            <div class="col-sm-4">
+                <i>Mã khách hàng: @ViewBag.MaKH</i>
             </div>
             <div class="col-sm-3">
-                <i>Mã khách: 1222022</i>
+                <i>Số điện thoại: @ViewBag.SDTKh</i>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                <i>Mã đơn hàng: 000002</i>
+                <i>Ngày bán: @ViewBag.ngayban.ToString("MM/dd/yyyy")</i>
+            </div>
+            <div class="col-sm-4">
+                <i>Tên khách hàng: @ViewBag.TenKH</i>
             </div>
             <div class="col-sm-3">
-                <i>Mã NVBH: 1022</i>
+                <i>Địa chỉ: @ViewBag.DiaChi</i>
             </div>
         </div>
     </div>
@@ -40,33 +92,13 @@
             <tr>
                 <th>STT</th>
                 <th>Tên sách</th>
-                <th>Đơn giá</th>
+                <th>Giá bán</th>
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Harry Porter</td>
-                <td>12$</td>
-                <td>1</td>
-                <td>12$</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Siêu nhân gao</td>
-                <td>2$</td>
-                <td>2</td>
-                <td>4$</td>
-            </tr>
-            <tr class="active-row">
-                <td></td>
-                <td>Tổng tiền thanh toán</td>
-                <td></td>
-                <td></td>
-                <td>16$</td>
-            </tr>
+        <tbody id="ct_dh">
+            
         </tbody>
     </table>
 </div>

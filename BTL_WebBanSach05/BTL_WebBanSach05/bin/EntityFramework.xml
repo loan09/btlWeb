@@ -1579,12 +1579,16 @@
             Dereference.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="F:System.Data.Entity.Core.Common.CommandTrees.DbExpressionKind.Distinct">
             <summary>
             Duplicate removal.
             </summary>
         </member>
         <member name="F:System.Data.Entity.Core.Common.CommandTrees.DbExpressionKind.Divide">
+=======
+        <member name="M:System.Data.Entity.DbConfiguration.SetTableExistenceChecker(System.String,System.Data.Entity.Infrastructure.TableExistenceChecker)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Division.
             </summary>
@@ -8918,6 +8922,7 @@
             <returns>The spatial services.</returns>
             <param name="manifestToken">The token information associated with the provider manifest.</param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.Common.DbProviderServices.GetSpatialServices(System.Data.Entity.Infrastructure.DbProviderInfo)">
             <summary>Gets the spatial services for the <see cref="T:System.Data.Entity.Core.Common.DbProviderServices" />.</summary>
             <returns>The spatial services.</returns>
@@ -9077,6 +9082,9 @@
             <param name="resolver">The resolver to add.</param>
         </member>
         <member name="M:System.Data.Entity.Core.Common.DbProviderServices.GetService(System.Type,System.Object)">
+=======
+        <member name="T:System.Data.Entity.Infrastructure.DependencyResolution.IDbDependencyResolver">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Called to resolve additional default provider services when a derived type is registered as an
             EF provider either using an entry in the application's config file or through code-based
@@ -9153,6 +9161,7 @@
             A collection of type <see cref="T:System.Collections.ObjectModel.ReadOnlyCollection`1" /> that contains the list of provider-supported functions.
             </returns>
         </member>
+<<<<<<< HEAD
         <member name="T:System.Data.Entity.Core.Common.EntityRecordInfo">
             <summary>
             EntityRecordInfo class providing a simple way to access both the type information and the column information.
@@ -9178,6 +9187,9 @@
             <param name="entitySet">The entity set to which the entity belongs.</param>
         </member>
         <member name="P:System.Data.Entity.Core.Common.EntityRecordInfo.EntityKey">
+=======
+        <member name="T:System.Data.Entity.Infrastructure.Design.AppConfigReader">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Gets the <see cref="T:System.Data.Entity.Core.EntityKey" /> for the entity.
             </summary>
@@ -9958,6 +9970,7 @@
             <param name="connectionString">The provider-specific connection string.</param>
             <exception cref="T:System.ArgumentException">An invalid connection string keyword has been provided, or a required connection string keyword has not been provided.</exception>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.EntityClient.EntityConnection.#ctor(System.Data.Entity.Core.Metadata.Edm.MetadataWorkspace,System.Data.Common.DbConnection)">
             <summary>
             Initializes a new instance of the <see cref="T:System.Data.Entity.Core.EntityClient.EntityConnection" /> class with a specified
@@ -9984,6 +9997,9 @@
             <param name="entityConnectionOwnsStoreConnection"> If set to true the store connection is disposed when the entity connection is disposed, otherwise the caller must dispose the store connection. </param>
         </member>
         <member name="P:System.Data.Entity.Core.EntityClient.EntityConnection.ConnectionString">
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.MutableInterceptionContext`1.SuppressExecution">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Gets or sets the <see cref="T:System.Data.Entity.Core.EntityClient.EntityConnection" /> connection string.
             </summary>
@@ -10690,6 +10706,7 @@
             </summary>
             <returns>The number of digits used to represent the value.</returns>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.EntityClient.EntityParameter.Scale">
             <summary>
             Gets or sets the number of decimal places to which
@@ -10716,19 +10733,73 @@
         <member name="P:System.Data.Entity.Core.EntityClient.EntityParameter.Size">
             <summary>Gets or sets the maximum size of the data within the column.</summary>
             <returns>The maximum size of the data within the column.</returns>
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.NonQueryExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Int32})">
+            <summary>
+            This method is called before a call to <see cref="M:System.Data.Common.DbCommand.ExecuteNonQuery"/> or
+            one of its async counterparts is made.
+            The default implementation calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executing``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/> and starts <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/>.
+            </summary>
+            <param name="command">The command being executed.</param>
+            <param name="interceptionContext">Contextual information associated with the call.</param>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.NonQueryExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Int32})">
+            <summary>
+            This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteNonQuery"/> or
+            one of its async counterparts is made.
+            The default implementation stops <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/> and calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>.
+            </summary>
+            <param name="command">The command being executed.</param>
+            <param name="interceptionContext">Contextual information associated with the call.</param>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ReaderExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})">
+            <summary>
+            This method is called before a call to <see cref="M:System.Data.Common.DbCommand.ExecuteReader(System.Data.CommandBehavior)"/> or
+            one of its async counterparts is made.
+            The default implementation calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executing``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/> and starts <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/>.
+            </summary>
+            <param name="command">The command being executed.</param>
+            <param name="interceptionContext">Contextual information associated with the call.</param>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ReaderExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})">
+            <summary>
+            This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteReader(System.Data.CommandBehavior)"/> or
+            one of its async counterparts is made.
+            The default implementation stops <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/> and calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>.
+            </summary>
+            <param name="command">The command being executed.</param>
+            <param name="interceptionContext">Contextual information associated with the call.</param>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="P:System.Data.Entity.Core.EntityClient.EntityParameter.SourceColumn">
             <summary>
+<<<<<<< HEAD
             Gets or sets the name of the source column mapped to the <see cref="T:System.Data.DataSet" /> and used for loading or returning the
             <see
                 cref="P:System.Data.Entity.Core.EntityClient.EntityParameter.Value" />
             .
+=======
+            This method is called before a call to <see cref="M:System.Data.Common.DbCommand.ExecuteScalar"/>  or
+            one of its async counterparts is made.
+            The default implementation calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executing``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/> and starts <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/>.
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             </summary>
             <returns>The name of the source column mapped to the dataset and used for loading or returning the value.</returns>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.EntityClient.EntityParameter.SourceColumnNullMapping">
             <summary>Gets or sets a value that indicates whether source column is nullable.</summary>
             <returns>true if source column is nullable; otherwise, false.</returns>
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ScalarExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Object})">
+            <summary>
+            This method is called after a call to <see cref="M:System.Data.Common.DbCommand.ExecuteScalar"/>  or
+            one of its async counterparts is made.
+            The default implementation stops <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Stopwatch"/> and calls <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Executed``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>.
+            </summary>
+            <param name="command">The command being executed.</param>
+            <param name="interceptionContext">Contextual information associated with the call.</param>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="P:System.Data.Entity.Core.EntityClient.EntityParameter.SourceVersion">
             <summary>
@@ -10740,7 +10811,14 @@
         </member>
         <member name="M:System.Data.Entity.Core.EntityClient.EntityParameter.ResetDbType">
             <summary>
+<<<<<<< HEAD
             Resets the type associated with the <see cref="T:System.Data.Entity.Core.EntityClient.EntityParameter" />.
+=======
+            Called whenever a command has completed executing. The default implementation of this method
+            filters by <see cref="T:System.Data.Entity.DbContext"/> set into <see cref="P:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.Context"/>, if any, and then calls
+            <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.LogResult``1(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{``0})"/>. This method would typically only be overridden to change the context
+            filtering behavior.
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             </summary>
         </member>
         <member name="M:System.Data.Entity.Core.EntityClient.EntityParameter.ToString">
@@ -11075,7 +11153,15 @@
         </member>
         <member name="P:System.Data.Entity.Core.EntityKey.IsTemporary">
             <summary>
+<<<<<<< HEAD
             Gets a value that indicates whether the <see cref="T:System.Data.Entity.Core.EntityKey" /> is temporary.
+=======
+            The stop watch used to time executions. This stop watch is started at the end of
+            <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.NonQueryExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Int32})"/>, <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ScalarExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Object})"/>, and <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ReaderExecuting(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})"/>
+            methods and is stopped at the beginning of the <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.NonQueryExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Int32})"/>, <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ScalarExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Object})"/>,
+            and <see cref="M:System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter.ReaderExecuted(System.Data.Common.DbCommand,System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext{System.Data.Common.DbDataReader})"/> methods. If these methods are overridden and the stop watch is being used
+            then the overrides should either call the base method or start/stop the watch themselves.
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             </summary>
             <returns>
             true if the <see cref="T:System.Data.Entity.Core.EntityKey" /> is temporary; otherwise, false.
@@ -11143,6 +11229,7 @@
             A <see cref="T:System.Data.Entity.Core.EntityKey" /> to compare.
             </param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.EntityKey.OnDeserializing(System.Runtime.Serialization.StreamingContext)">
             <summary>
             Helper method that is used to deserialize an <see cref="T:System.Data.Entity.Core.EntityKey" />.
@@ -11156,6 +11243,9 @@
             <param name="context">Describes the source and destination of a given serialized stream and provides an additional caller-defined context.</param>
         </member>
         <member name="T:System.Data.Entity.Core.EntityKeyMember">
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.MutableInterceptionContext.AsAsync">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Information about a key that is part of an EntityKey.
             A key member contains the key name and value.
@@ -11301,6 +11391,7 @@
             its internals, it can be a breaking change
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.MappingException.#ctor">
             <summary>
             Initializes a new instance of <see cref="T:System.Data.Entity.Core.MappingException" />.
@@ -11313,6 +11404,9 @@
             <param name="message">The message that describes the error.</param>
         </member>
         <member name="M:System.Data.Entity.Core.MappingException.#ctor(System.String,System.Exception)">
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.PropertyInterceptionContext`1.WithValue(`0)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Initializes a new instance of <see cref="T:System.Data.Entity.Core.MappingException" /> that uses a specified error message and a reference to the inner exception.
             </summary>
@@ -11587,6 +11681,7 @@
             </summary>
             <param name="propertyMapping">The property mapping to be removed.</param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.Mapping.ComplexTypeMapping.AddCondition(System.Data.Entity.Core.Mapping.ConditionPropertyMapping)">
             <summary>
             Adds a property mapping condition.
@@ -11600,6 +11695,9 @@
             <param name="condition">The property mapping condition to be removed.</param>
         </member>
         <member name="T:System.Data.Entity.Core.Mapping.ConditionPropertyMapping">
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DbCommandInterceptionContext`1.SuppressExecution">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Mapping metadata for Conditional property mapping on a type.
             Condition Property Mapping specifies a Condition either on the C side property or S side property.
@@ -11772,6 +11870,7 @@
             Gets the entity set mappings.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.Mapping.EntityContainerMapping.AssociationSetMappings">
             <summary>
             Gets the association set mappings.
@@ -11781,6 +11880,10 @@
             <summary>
             Gets the function import mappings.
             </summary>
+=======
+        <member name="M:System.Data.Entity.Infrastructure.Interception.DbCommandTreeInterceptionContext.Clone">
+            <inheritdoc />
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="P:System.Data.Entity.Core.Mapping.EntityContainerMapping.GenerateUpdateViews">
             <summary>
@@ -12867,7 +12970,15 @@
             <summary>
             Initializes a new instance of the <see cref="T:System.Data.Entity.Core.MetadataException" /> class with the specified message.
             </summary>
+<<<<<<< HEAD
             <param name="message">The exception message.</param>
+=======
+            <remarks>
+            This transaction handler uses <see cref="P:System.Data.Entity.Infrastructure.CommitFailureHandler.TransactionContext"/> to store the transaction information
+            the schema used can be configured by creating a class derived from <see cref="P:System.Data.Entity.Infrastructure.CommitFailureHandler.TransactionContext"/>
+            that overrides DbContext.OnModelCreating(DbModelBuilder) and passing it to the constructor of this class.
+            </remarks>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="M:System.Data.Entity.Core.MetadataException.#ctor(System.String,System.Exception)">
             <summary>
@@ -12883,6 +12994,7 @@
             Represents a end of a Association Type
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.Metadata.Edm.AssociationEndMember.BuiltInTypeKind">
             <summary>
             Gets the built-in type kind for this <see cref="T:System.Data.Entity.Core.Metadata.Edm.AssociationEndMember" />.
@@ -12893,6 +13005,19 @@
                 cref="T:System.Data.Entity.Core.Metadata.Edm.AssociationEndMember" />
             .
             </returns>
+=======
+        <member name="M:System.Data.Entity.Infrastructure.CommitFailureHandler.Initialize(System.Data.Entity.Core.Objects.ObjectContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.CommitFailureHandler.Initialize(System.Data.Entity.DbContext,System.Data.Common.DbConnection)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.CommitFailureHandler.Dispose(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:System.Data.Entity.Infrastructure.CommitFailureHandler.BuildDatabaseInitializationScript">
+            <inheritdoc/>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="M:System.Data.Entity.Core.Metadata.Edm.AssociationEndMember.Create(System.String,System.Data.Entity.Core.Metadata.Edm.RefType,System.Data.Entity.Core.Metadata.Edm.RelationshipMultiplicity,System.Data.Entity.Core.Metadata.Edm.OperationAction,System.Collections.Generic.IEnumerable{System.Data.Entity.Core.Metadata.Edm.MetadataProperty})">
             <summary>
@@ -13062,6 +13187,7 @@
             .
             </returns>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.Metadata.Edm.AssociationType.Constraint">
             <summary>Gets or sets the referential constraint.</summary>
             <returns>The referential constraint.</returns>
@@ -13082,6 +13208,9 @@
             <returns>A Boolean value that specifies whether the column is a foreign key. If true, the column is a foreign key. If false (default), the column is not a foreign key.</returns>
         </member>
         <member name="M:System.Data.Entity.Core.Metadata.Edm.AssociationType.Create(System.String,System.String,System.Boolean,System.Data.Entity.Core.Metadata.Edm.DataSpace,System.Data.Entity.Core.Metadata.Edm.AssociationEndMember,System.Data.Entity.Core.Metadata.Edm.AssociationEndMember,System.Data.Entity.Core.Metadata.Edm.ReferentialConstraint,System.Collections.Generic.IEnumerable{System.Data.Entity.Core.Metadata.Edm.MetadataProperty})">
+=======
+        <member name="P:System.Data.Entity.Infrastructure.CommitFailureHandler.PruningLimit">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Creates a read-only AssociationType instance from the specified parameters.
             </summary>
@@ -13531,6 +13660,7 @@
             .
             </returns>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.Metadata.Edm.Documentation.Summary">
             <summary>
             Gets the summary for this <see cref="T:System.Data.Entity.Core.Metadata.Edm.Documentation" />.
@@ -13613,6 +13743,9 @@
             </returns>
         </member>
         <member name="M:System.Data.Entity.Core.Metadata.Edm.EdmFunction.AddParameter(System.Data.Entity.Core.Metadata.Edm.FunctionParameter)">
+=======
+        <member name="T:System.Data.Entity.ModelConfiguration.Configuration.TypeConventionConfiguration">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Adds a parameter to this function.
             </summary>
@@ -18037,6 +18170,7 @@
             Represents one end of a relationship.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="P:System.Data.Entity.Core.Objects.DataClasses.IRelatedEnd.IsLoaded">
             <summary>
             Gets or sets a value indicating whether the entity (for an <see cref="T:System.Data.Entity.Core.Objects.DataClasses.EntityReference"/> or all entities 
@@ -18082,6 +18216,13 @@
         </member>
         <member name="M:System.Data.Entity.Core.Objects.DataClasses.IRelatedEnd.LoadAsync(System.Threading.CancellationToken)">
             <summary>Asynchronously loads the related object or objects into this related end with the default merge option.</summary>
+=======
+        <member name="M:System.Data.Entity.Core.Objects.EntityFunctions.AsUnicode(System.String)">
+            <summary>
+            When used as part of a LINQ to Entities query, this method acts as an operator that ensures the input
+            is treated as a Unicode string.
+            </summary>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <remarks>
             Multiple active operations on the same context instance are not supported.  Use 'await' to ensure
             that any asynchronous operations have completed before calling another method on this context.
@@ -18540,11 +18681,18 @@
             . An empty enumeration is returned when the relationships have not yet been populated.
             </returns>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.OnSerializing(System.Runtime.Serialization.StreamingContext)">
             <summary>
             Called by Object Services to prepare an <see cref="T:System.Data.Entity.Core.EntityKey" /> for binary serialization with a serialized relationship.
             </summary>
             <param name="context">Describes the source and destination of a given serialized stream, and provides an additional caller-defined context.</param>
+=======
+        <member name="M:System.Data.Entity.Core.Common.DbProviderManifest.EscapeLikeArgument(System.String)">
+            <summary>Provider writers should override this method to return the argument with the wildcards and the escape character escaped. This method is only used if SupportsEscapingLikeArgument returns true.</summary>
+            <returns>The argument with the wildcards and the escape character escaped.</returns>
+            <param name="argument">The argument to be escaped.</param>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="M:System.Data.Entity.Core.Objects.DataClasses.RelationshipManager.OnDeserialized(System.Runtime.Serialization.StreamingContext)">
             <summary>
@@ -18669,6 +18817,7 @@
             <param name="value">The value being set.</param>
             <param name="isNullable">Indicates whether the property is nullable.</param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.Objects.DataClasses.StructuralObject.SetValidValue(System.Boolean,System.String)">
             <summary>
             Makes sure the <see cref="T:System.Boolean" /> value being set for a property is valid.
@@ -18687,6 +18836,12 @@
             The <see cref="T:System.Boolean" /> value being set.
             </returns>
             <param name="value">The Boolean value.</param>
+=======
+        <member name="M:System.Data.Entity.Core.Common.DbProviderServices.GetProviderManifestToken(System.Data.Common.DbConnection)">
+            <summary>Returns provider manifest token given a connection.</summary>
+            <returns>The provider manifest token.</returns>
+            <param name="connection">Connection to provider.</param>
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
         </member>
         <member name="M:System.Data.Entity.Core.Objects.DataClasses.StructuralObject.SetValidValue(System.Nullable{System.Boolean},System.String)">
             <summary>
@@ -19724,6 +19879,7 @@
             </returns>
             <param name="i">The ordinal of the field.</param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Core.Objects.DbUpdatableDataRecord.SetRecordValue(System.Int32,System.Object)">
             <summary>Sets the value of a field in a record.</summary>
             <param name="ordinal">The ordinal of the field.</param>
@@ -19735,6 +19891,9 @@
             </summary>
         </member>
         <member name="T:System.Data.Entity.Core.Objects.EntityFunctions">
+=======
+        <member name="T:System.Data.Entity.Infrastructure.ExecutionStrategyKey">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Provides common language runtime (CLR) methods that expose EDM canonical functions
             for use in <see cref="T:System.Data.Entity.DbContext" /> or <see cref="T:System.Data.Entity.Core.Objects.ObjectContext" /> LINQ to Entities queries.
@@ -35496,6 +35655,7 @@
             'Data Source=.\SQLEXPRESS; Integrated Security=True; MultipleActiveResultSets=True;'.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Infrastructure.SqlConnectionFactory.#ctor(System.String)">
             <summary>
             Creates a new connection factory with the given BaseConnectionString property.
@@ -35511,6 +35671,9 @@
             </summary>
         </member>
         <member name="M:System.Data.Entity.Infrastructure.SqlConnectionFactory.CreateConnection(System.String)">
+=======
+        <member name="M:System.Data.Entity.DbFunctions.AsUnicode(System.String)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Creates a connection for SQL Server based on the given database name or connection string.
             If the given string contains an '=' character then it is treated as a full connection string,
@@ -39009,7 +39172,13 @@
         </member>
         <member name="M:System.Data.Entity.ModelConfiguration.Configuration.StringPropertyConfiguration.HasDatabaseGeneratedOption(System.Nullable{System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption})">
             <summary>
+<<<<<<< HEAD
             Configures how values for the property are generated by the database.
+=======
+            Gets or sets the string used to distinguish migrations belonging to this configuration
+            from migrations belonging to other configurations using the same database.
+            This property enables migrations from multiple different models to be applied to applied to a single database.
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             </summary>
             <param name="databaseGeneratedOption">
             The pattern used to generate values for the property in the database.
@@ -39896,6 +40065,7 @@
             Convention to process instances of <see cref="T:System.ComponentModel.DataAnnotations.Schema.InversePropertyAttribute" /> found on properties in the model.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.ModelConfiguration.Conventions.InversePropertyAttributeConvention.Apply(System.Reflection.PropertyInfo,System.Data.Entity.ModelConfiguration.Configuration.ConventionTypeConfiguration,System.ComponentModel.DataAnnotations.Schema.InversePropertyAttribute)">
             <inheritdoc/>
         </member>
@@ -39949,6 +40119,9 @@
             <typeparam name="TAttribute"> The type of the attribute to look for. </typeparam>
         </member>
         <member name="M:System.Data.Entity.ModelConfiguration.Conventions.PropertyAttributeConfigurationConvention`1.#ctor">
+=======
+        <member name="T:System.Data.Entity.Migrations.Design.ToolingFacade">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Initializes a new instance of the <see cref="T:System.Data.Entity.ModelConfiguration.Conventions.PropertyAttributeConfigurationConvention`1"/> class.
             </summary>
@@ -41560,7 +41733,14 @@
              specify arguments e.g. 'new { SampleArgument = "MyValue" }'.
              </param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Migrations.DbMigration.AddForeignKey(System.String,System.String[],System.String,System.String[],System.Boolean,System.String,System.Object)">
+=======
+        <member name="P:System.Data.Entity.Migrations.Model.PrimaryKeyOperation.IsDestructiveChange">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation.#ctor(System.Object)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
              <summary>
              Adds an operation to create a new foreign key constraint.
             
@@ -41594,7 +41774,16 @@
              specify arguments e.g. 'new { SampleArgument = "MyValue" }'.
              </param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Migrations.DbMigration.DropForeignKey(System.String,System.String,System.Object)">
+=======
+        <member name="P:System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation.IsClustered">
+            <summary>
+            Gets or sets whether this is a clustered primary key.
+            </summary>
+        </member>
+        <member name="T:System.Data.Entity.Migrations.Model.AlterColumnOperation">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
              <summary>
              Adds an operation to drop a foreign key constraint based on its name.
             
@@ -42522,6 +42711,7 @@
             <param name="alterColumnOperation"> The operation to generate code for. </param>
             <param name="writer"> Text writer to add the generated code to. </param>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Migrations.Design.CSharpMigrationCodeGenerator.GenerateAnnotations(System.Collections.Generic.IDictionary{System.String,System.Object},System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
             <summary>
             Generates code for to re-create the given dictionary of annotations for use when passing
@@ -42531,6 +42721,9 @@
             <param name="writer">The writer to which generated code should be written.</param>
         </member>
         <member name="M:System.Data.Entity.Migrations.Design.CSharpMigrationCodeGenerator.GenerateAnnotations(System.Collections.Generic.IDictionary{System.String,System.Data.Entity.Infrastructure.Annotations.AnnotationValues},System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+=======
+        <member name="M:System.Data.Entity.Migrations.Sql.MigrationSqlGenerator.BuildStoreTypeUsage(System.String,System.Data.Entity.Migrations.Model.PropertyModel)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Generates code for to re-create the given dictionary of annotations for use when passing
             these annotations as a parameter of a <see cref="T:System.Data.Entity.Migrations.DbMigration"/>. call.
@@ -45715,6 +45908,7 @@
             Writes a line terminator.
             </summary>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Migrations.Utilities.IndentedTextWriter.WriteLine(System.Boolean)">
             <summary>
             Writes the text representation of a Boolean, followed by a line terminator, to the text stream.
@@ -45722,6 +45916,9 @@
             <param name="value"> The Boolean to write. </param>
         </member>
         <member name="M:System.Data.Entity.Migrations.Utilities.IndentedTextWriter.WriteLine(System.Char)">
+=======
+        <member name="M:System.Data.Entity.DbSet.#ctor">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Writes a character, followed by a line terminator, to the text stream.
             </summary>
@@ -46173,6 +46370,7 @@
             The task result contains an array that contains elements from the input sequence.
             </returns>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.QueryableExtensions.ToArrayAsync``1(System.Linq.IQueryable{``0},System.Threading.CancellationToken)">
             <summary>
             Creates an array from an <see cref="T:System.Linq.IQueryable`1" /> by enumerating it asynchronously.
@@ -46196,6 +46394,9 @@
             </returns>
         </member>
         <member name="M:System.Data.Entity.QueryableExtensions.ToDictionaryAsync``2(System.Linq.IQueryable{``0},System.Func{``0,``1})">
+=======
+        <member name="T:System.Data.Entity.IDbSet`1">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Creates a <see cref="T:System.Collections.Generic.Dictionary`2" /> from an <see cref="T:System.Linq.IQueryable`1" /> by enumerating it asynchronously
             according to a specified key selector function.
@@ -53654,6 +53855,7 @@
             is not compatible with this spatial services implementation.
             </exception>
         </member>
+<<<<<<< HEAD
         <member name="M:System.Data.Entity.Spatial.DbSpatialServices.GetPointOnSurface(System.Data.Entity.Spatial.DbGeometry)">
             <summary>
             Returns a <see cref="T:System.Data.Entity.Spatial.DbGeometry" /> value that represents a point on the surface of the given DbGeometry value, which may be null if the value does not represent a surface.
@@ -53687,6 +53889,9 @@
             </exception>
         </member>
         <member name="M:System.Data.Entity.Spatial.DbSpatialServices.GetInteriorRingCount(System.Data.Entity.Spatial.DbGeometry)">
+=======
+        <member name="M:System.Data.Entity.ModelConfiguration.EntityTypeConfiguration`1.HasEntitySetName(System.String)">
+>>>>>>> 3da2b0cf4635676afb6ea791601c44d403bb1656
             <summary>
             Returns the number of interior rings in the given <see cref="T:System.Data.Entity.Spatial.DbGeometry" /> value, if it represents a polygon.
             </summary>

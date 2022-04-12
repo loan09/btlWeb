@@ -3,6 +3,96 @@
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_thongke.cshtml";
 }
+
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTK(2022);
+        });
+        function GetTK(year) {
+            console.log(year);
+            $.ajax({
+                url: 'https://localhost:44357/api/thongkeapi/' + year,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    var j = 0;
+
+                    for (var i = 0; i < 12; ++i) {
+                        if (len > 0) {
+                            if (reponse[j].Thang == i + 1) {
+                                table = table +
+                                    '<td>' + reponse[j].Thang + '</td>' +
+                                    '<td>' + reponse[j].TongHD + '</td>' +
+                                    '<td>' + reponse[j].TongSP + '</td>' +
+                                    '<td>' + reponse[j].TongTien + '</td></tr>';
+                                if (j < len - 1) {
+                                    j = j + 1;
+                                }
+                            }
+                            else {
+                                table = table +
+                                    '<td>' + (i + 1) + '</td>' +
+                                    '<td>0</td>' +
+                                    '<td>0</td>' +
+                                    '<td>0</td></tr>';
+                            }
+                        }
+                        else {
+                            table = table +
+                                '<td>' + (i + 1) + '</td>' +
+                                '<td>0</td>' +
+                                '<td>0</td>' +
+                                '<td>0</td></tr>';
+                        }
+                    }
+                    document.getElementById('thongke').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("#year").change(function () {
+            GetTK($(this).val());
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetSPMax();
+        });
+        function GetSPMax() {
+            $.ajax({
+                url: 'https://localhost:44357/api/ThongKeSpApi',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var j = 0; j < len; j++) {
+                        table = table +
+                            '<td>' + reponse[j].TenSach + '</td>' +
+                            '<td>' + reponse[j].GiaSach + '</td>' +
+                            '<td><small class="text-success mr-1"><i class="fas fa-arrow-up"></i>12%</small>' + reponse[j].DoanhThu + '</td>' +
+                            '<td><a href="#" class="text-muted"><i class="fas fa-search"></i></a></td></tr>';
+                    }
+                    document.getElementById('spMax').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+}
+
 <link href="~/Areas/Admin/Content/style/styleTK.css" rel="stylesheet" />
 
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
@@ -15,12 +105,12 @@
                 </div>
                 <div class="col-sm-3">
                     Năm:
-                    <select name="cars" id="cars" class="cmbNam">
-                        <option value="">2022</option>
-                        <option value="volvo">2021</option>
-                        <option value="saab">2020</option>
-                        <option value="opel">2019</option>
-                        <option value="audi">2018</option>
+                    <select name="cars" id="year" class="cmbNam">
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
                     </select>
                 </div>
             </div>
@@ -36,79 +126,7 @@
                 <th>Doanh thu</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>20.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>10.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>15.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>12.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>10.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>30.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>40.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>13.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>23.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>17.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>19.000.000 đ</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>1627</td>
-                <td>12332</td>
-                <td>20.000.000 đ</td>
-            </tr>
+        <tbody id="thongke">
         </tbody>
     </table>
     <div class="Pagination">
@@ -145,80 +163,8 @@
                                     <th>More</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        Harry Porter
-                                    </td>
-                                    <td>130.000 đ</td>
-                                    <td>
-                                        <small class="text-success mr-1">
-                                            <i class="fas fa-arrow-up"></i>
-                                            12%
-                                        </small>
-                                        12.000.000 đ
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Harry Truman
-                                    </td>
-                                    <td>200.000 đ</td>
-                                    <td>
-                                        <small class="text-warning mr-1">
-                                            <i class="fas fa-arrow-down"></i>
-                                            0.5%
-                                        </small>
-                                        10.000.000 đ
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Peter Parker
-                                        <span class="badge bg-danger">NEW</span>
-                                    </td>
-                                    <td>100.000 đ</td>
-                                    <td>
-                                        <small class="text-danger mr-1">
-                                            <i class="fas fa-arrow-down"></i>
-                                            3%
-                                        </small>
-                                        15.000.000 đ
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Perfect Harry
-                                    </td>
-                                    <td>50.000 đ</td>
-                                    <td>
-                                        <small class="text-success mr-1">
-                                            <i class="fas fa-arrow-up"></i>
-                                            63%
-                                        </small>
-                                        40.000.000 đ
-                                    </td>
-                                    <td>
-                                        <a href="#" class="text-muted">
-                                            <i class="fas fa-search"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                            <tbody id="spMax">
+                                
                             </tbody>
                         </table>
                     </div>

@@ -4,6 +4,28 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
 }
 
+@section scripts{
+    <script type="text/javascript">
+        //Hàm lấy Thêm mới Khách hàng. Dùng $.ajax() thực hiện method HTTP POST
+        function deleteSP(id) {
+            var url = 'https://localhost:44357/api/sach?id=' + id
+            $.ajax({
+                url: url,
+                method: 'DELETE',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                    alert("Xóa không thành công");
+                },
+                success: function (reponse) {
+                    console.log(reponse);
+                    alert("Xóa thành công");
+                }
+            });
+        }
+    </script>
+}
+
 <link href="~/Areas/Admin/Content/style/styleChiTietSP.css" rel="stylesheet" />
 <!-- Content Header -->
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
@@ -11,34 +33,35 @@
         <div class="container-fluid">
             <div class="row contentHeader">
                 <div class="col-sm-4">
-                    <img src="~/Areas/Admin/Image/sp2.jpg" />
+                    <img src="https://localhost:44357/Areas/Admin/Image/@ViewBag.tenanh" />
                 </div>
                 <div class="col-sm-8 MainSP">
-                    <h4>Truyện mẹ kể con nghe</h4>
-                    <div class="row contentMain">
-                        <div class="col-sm-6">
-                            <p>Nhà cung cấp: Bình Tây</p>
-                            <p>Xuất xứ: Việt Nam</p>
-                            <p>Giá nhập: 50.000 đ</p>
-                            <p>Giá bán: 70.000 đ</p>
-                            <p>Số lượng: 100 quyển</p>
+                    <div class="col-sm-8 MainSP">
+                        <h4>@ViewBag.TenSanPham</h4>
+                        <div class="row contentMain">
+                            <div class="col-sm-6">
+                                <p>Ngôn ngữ: @ViewBag.NgonNgu</p>
+                                <p>Kích thước: @ViewBag.KichThuoc</p>
+                                <p>Giá nhập: @ViewBag.gianhap</p>
+                                <p>Giá bán: @ViewBag.giaban</p>
+                                <p>Năm xuất bản: @ViewBag.namXB </p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p>Tác giả: @ViewBag.TacGia</p>
+                                <p>Thể loại: @ViewBag.TheLoai</p>
+                                <p>Nhà xuất bản: @ViewBag.NXB</p>
+                                <p>Người dịch: @ViewBag.NguoiDich</p>
+                                <p>Số trang: @ViewBag.sotrang trang</p>
+                            </div>
                         </div>
-                        <div class="col-sm-6">
-                            <p>Tác giả: Bình Tây</p>
-                            <p>Thể loại: B.bag</p>
-                            <p>Nhà xuất bản: Việt Nam</p>
-                            <p>Người dịch: Phạm Thành</p>
-                            <p>Số trang: 200 trang</p>
+                        <div class="row btnSP">
+                            <a href="https://localhost:44357/Admin/SanPham/UpdateSP/@ViewBag.MaSach" class="btnPro">Sửa</a>
+                            <a href="" onclick="deleteSP(@ViewBag.MaSach)" class="btnDelete">Xóa</a>
+                            <a href="@Url.Action("Index")" class="btnPro">Back</a>
                         </div>
-                    </div>
-                    <div class="row btnSP">
-                        <a href="@Url.Action("addProduct")" class="btnPro">Sửa</a>
-                        <a href="#" class="btnDelete">Xóa</a>
-                        <a href="@Url.Action("Index")" class="btnPro">Back</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /.content-header -->
+    <!-- /.content-header -->

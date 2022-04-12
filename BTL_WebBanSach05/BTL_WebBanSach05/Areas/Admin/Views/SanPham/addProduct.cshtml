@@ -3,101 +3,200 @@
     ViewBag.Title = "addProduct";
     Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
 }
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTacGia();
+        });
+        function GetTacGia() {
+            $.ajax({
+                url: 'https://localhost:44357/api/tacgia',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATACGIA + '">' + reponse[i].TENTACGIA + '</option>';
+                    }
+                    document.getElementById('tacgia').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetNXB();
+        });
+        function GetNXB() {
+            $.ajax({
+                url: 'https://localhost:44357/api/nxb',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MANXB + '">' + reponse[i].TENNXB + '</option>';
+                    }
+                    document.getElementById('nxb').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTheLoai();
+        });
+        function GetTheLoai() {
+            $.ajax({
+                url: 'https://localhost:44357/api/theloai',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATHELOAI + '">' + reponse[i].TENTHELOAI + '</option>';
+                    }
+                    document.getElementById('Theloai').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        //Hàm lấy Thêm mới Khách hàng. Dùng $.ajax() thực hiện method HTTP POST
+        function insertSP() {
+            var x = $("input[name='tenanh']").val();
+            temp = x.split('\\');
+            x = temp[temp.length - 1];
+            var url = 'https://localhost:44357/api/sach?tenSP=' +
+                $("input[name='tenSP']").val() +
+                '&tenanh=' + x +
+                '&nguoidich=' + $("input[name='nguoidich']").val() +
+                '&ngonngu=' + $("input[name='ngonngu']").val() +
+                '&sotrang=' + $("input[name='sotrang']").val() +
+                '&trongluong=' + $("input[name='trongluong']").val() +
+                '&namxB=' + $("input[name='namxB']").val() +
+                '&kichthuoc=' + $("input[name='kichthuoc']").val() +
+                '&maTL=' + $("select[name='Theloai']").val() +
+                '&maTG=' + $("select[name='tacgia']").val() +
+                '&maNXB=' + $("select[name='nxb']").val() +
+                '&gianhap=' + $("input[name='gianhap']").val() +
+                '&giaban=' + $("input[name='giaban']").val();
+
+            $.ajax({
+                url: url,
+                method: 'POST',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                    alert("Thêm mới không thành công! Vui lòng nhập đủ thông tin!");
+                },
+                success: function (reponse) {
+                    if (reponse == true) {
+                        alert("Thêm mới thành công");
+                    }
+                    else {
+                        alert("Thêm mới không thành công! Vui lòng nhập đủ thông tin!");
+                    }
+                }
+            });
+        }
+    </script>
+
+}
 <!-- Content Header -->
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
     <div class="content-header">
         <div class="container-fluid">
             <div class="formAdd">
-                <form name="addProduct" onsubmit="return SubmitForm()">
+                <div name="addProduct">
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="codebook">Mã sách</label>
-                            <input name="MaSach" type="text" class="form-control" id="codebook" placeholder="Mã sách" required>
+                            <label for="booktitle">Tên sách</label>
+                            <input name="tenSP" type="text" class="form-control" id="booktitle" placeholder="Tên sách" required>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="booktitle">Tên sách</label>
-                            <input name="TenSach" type="text" class="form-control" id="booktitle" placeholder="Tên sách" required>
+                            <label for="codebook">Năm xuất bản</label>
+                            <input name="namXB" type="text" class="form-control" id="codebook" placeholder="Năm xuất bản" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">Tác giả</label>
-                            <select class="form-control" id="author">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="tacgia" name="tacgia">
                             </select>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="Category">Thể loại</label>
-                            <select class="form-control" id="Category">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="Theloai" name="Theloai">
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="Category">Nhà cung cấp</label>
-                            <select class="form-control" id="Category">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <label for="publishingcompany">Nhà xuất bản</label>
+                            <select class="form-control" id="nxb" name="nxb">
                             </select>
                         </div>
                         <div class="form-group col-md-6">
-                            <label for="publishingcompany">Nhà xuất bản</label>
-                            <select class="form-control" id="publishingcompany">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                            </select>
+                            <label for="price">Ngôn ngữ</label>
+                            <input name="ngonngu" type="text" class="form-control" id="price" placeholder="Ngôn ngữ" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="price">Người dịch</label>
-                            <input name="NguoiDich" type="text" class="form-control" id="price" placeholder="Người dịch" required>
+                            <input name="nguoidich" type="text" class="form-control" id="price" placeholder="Người dịch" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="purchaseprice">Trọng lượng</label>
-                            <input name="TrongLuong" type="text" class="form-control" id="purchaseprice" placeholder="Trọng lượng" required>
+                            <input name="trongluong" type="text" class="form-control" id="purchaseprice" placeholder="Trọng lượng" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="price">Kích thước</label>
-                            <input name="KichThuoc" type="text" class="form-control" id="price" placeholder="Kích thước" required>
+                            <input name="kichthuoc" type="text" class="form-control" id="price" placeholder="Kích thước" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="purchaseprice">Số trang</label>
-                            <input name="SoTrang" type="text" class="form-control" id="purchaseprice" placeholder="Số trang" required>
+                            <input name="sotrang" type="text" class="form-control" id="purchaseprice" placeholder="Số trang" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="price">Giá bán</label>
-                            <input name="GiaBan" type="text" class="form-control" id="price" placeholder="Giá bán" required>
+                            <input name="giaban" type="text" class="form-control" id="price" placeholder="Giá bán" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="purchaseprice">Giá nhập</label>
-                            <input name="GiaNhap" type="text" class="form-control" id="purchaseprice" placeholder="Giá nhập" required>
+                            <input name="gianhap" type="text" class="form-control" id="purchaseprice" placeholder="Giá nhập" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group img">
                             <label for="price" class="tittelImg">File ảnh: </label>
-                            <input type="file" class="form" id="Fileimg">
+                            <input type="file" class="form" id="tenanh" name="tenanh">
                         </div>
                     </div>
                     <div class="row tittelSP">
@@ -105,10 +204,10 @@
                         </div>
                         <div class="col-sm-6">
                             <a href="@Url.Action("Index")" class="btnPro">Back</a>
-                            <button class="btn btnPro" type="submit">Submit</button>
+                            <button class="btn btnPro" type="submit" onclick="insertSP()">Submit</button>
                         </div>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
@@ -117,9 +216,3 @@
 
 <script src="~/Areas/Admin/Content/plugins/jquery/jquery.min.js"></script>
 <script src="~/Areas/Admin/Content/dist/js/bootstrap.js"></script>
-<script>
-    function SubmitForm() {
-        alert("Bạn đã thêm sản phẩm thành công!")
-        return true
-    }
-</script>
