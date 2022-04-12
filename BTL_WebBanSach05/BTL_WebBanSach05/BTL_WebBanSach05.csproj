@@ -46,10 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -136,13 +136,20 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DangKyController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\DonHangController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KhachHangApiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NCCController.cs" />
     <Compile Include="Areas\Admin\Controllers\NXBController.cs" />
     <Compile Include="Areas\Admin\Controllers\SachController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamController.cs" />
     <Compile Include="Areas\Admin\Controllers\TacGiaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TaiKhoanController.cs" />
     <Compile Include="Areas\Admin\Controllers\TheLoaiController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThongKeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThongKeSpApiController.cs" />
     <Compile Include="Areas\HelpPage\ApiDescriptionExtensions.cs" />
     <Compile Include="Areas\HelpPage\App_Start\HelpPageConfig.cs" />
     <Compile Include="Areas\HelpPage\Controllers\HelpController.cs" />
@@ -256,6 +263,27 @@
     <Content Include="Areas\Admin\Content\style\styleKH.css" />
     <Content Include="Areas\Admin\Content\style\styleLogin.css" />
     <Content Include="Areas\Admin\Content\style\styleTK.css" />
+    <Content Include="Areas\Admin\Image\01.jpg" />
+    <Content Include="Areas\Admin\Image\02.jpg" />
+    <Content Include="Areas\Admin\Image\03.jpg" />
+    <Content Include="Areas\Admin\Image\04.jpg" />
+    <Content Include="Areas\Admin\Image\05.jpg" />
+    <Content Include="Areas\Admin\Image\06.jpg" />
+    <Content Include="Areas\Admin\Image\07.jpg" />
+    <Content Include="Areas\Admin\Image\08.jpg" />
+    <Content Include="Areas\Admin\Image\09.jpg" />
+    <Content Include="Areas\Admin\Image\10.jpg" />
+    <Content Include="Areas\Admin\Image\11.jpg" />
+    <Content Include="Areas\Admin\Image\12.jpg" />
+    <Content Include="Areas\Admin\Image\13.jpg" />
+    <Content Include="Areas\Admin\Image\14.jpg" />
+    <Content Include="Areas\Admin\Image\15.jpg" />
+    <Content Include="Areas\Admin\Image\16.jpg" />
+    <Content Include="Areas\Admin\Image\17.jpg" />
+    <Content Include="Areas\Admin\Image\18.jpg" />
+    <Content Include="Areas\Admin\Image\19.jpg" />
+    <Content Include="Areas\Admin\Image\20.jpg" />
+    <Content Include="Areas\Admin\Image\21.jpg" />
     <Content Include="Areas\Admin\Image\logo.png" />
     <Content Include="Areas\Admin\Image\sp2.jpg" />
     <Content Include="Areas\Admin\Image\sp3.jpg" />
@@ -332,6 +360,12 @@
     <Content Include="Areas\Admin\Views\DonHang\Index.cshtml" />
     <Content Include="Areas\Admin\Views\DonHang\CTDonHang.cshtml" />
     <Content Include="Areas\Admin\Views\ThongKe\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DangKyAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutDangKy.cshtml" />
+    <Content Include="Areas\Admin\Views\TaiKhoan\DangNhapAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\DangKy.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPham\UpdateSP.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

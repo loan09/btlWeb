@@ -1,0 +1,219 @@
+﻿
+@{
+    ViewBag.Title = "addProduct";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_sanpham.cshtml";
+}
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTacGia();
+        });
+        function GetTacGia() {
+            $.ajax({
+                url: 'https://localhost:44357/api/tacgia',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="@ViewBag.MaTG">@ViewBag.TacGia</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATACGIA + '">' + reponse[i].TENTACGIA + '</option>';
+                    }
+                    document.getElementById('tacgia').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetNXB();
+        });
+        function GetNXB() {
+            $.ajax({
+                url: 'https://localhost:44357/api/nxb',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="@ViewBag.MaNXB">@ViewBag.NXB</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MANXB + '">' + reponse[i].TENNXB + '</option>';
+                    }
+                    document.getElementById('nxb').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetTheLoai();
+        });
+        function GetTheLoai() {
+            $.ajax({
+                url: 'https://localhost:44357/api/theloai',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let option = '<option value="@ViewBag.MaTL">@ViewBag.TheLoai</option>';
+                    for (var i = 0; i < len; ++i) {
+                        option = option + '<option value="' + reponse[i].MATHELOAI + '">' + reponse[i].TENTHELOAI + '</option>';
+                    }
+                    document.getElementById('Theloai').innerHTML = option;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        //Hàm lấy Thêm mới Khách hàng. Dùng $.ajax() thực hiện method HTTP POST
+        function Update() {
+            var x = $("input[name='tenanh']").val();
+            temp = x.split('\\');
+            x = temp[temp.length - 1];
+
+            var url = 'https://localhost:44357/api/sach?maSP=@ViewBag.MaSach&tenSP=' +
+                $("input[name='tenSP']").val() +
+                '&tenanh=' + x +
+                '&nguoidich=' + $("input[name='nguoidich']").val() +
+                '&ngonngu=' + $("input[name='ngonngu']").val() +
+                '&sotrang=' + $("input[name='sotrang']").val() +
+                '&trongluong=' + $("input[name='trongluong']").val() +
+                '&namxB=' + $("input[name='namxB']").val() +
+                '&kichthuoc=' + $("input[name='kichthuoc']").val() +
+                '&maTL=' + $("select[name='Theloai']").val() +
+                '&maTG=' + $("select[name='tacgia']").val() +
+                '&maNXB=' + $("select[name='nxb']").val() +
+                '&gianhap=' + $("input[name='gianhap']").val() +
+                '&giaban=' + $("input[name='giaban']").val();
+
+            $.ajax({
+                url: url,
+                method: 'PUT',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                    alert("Cập nhật không thành công! Vui lòng nhập đủ thông tin!");
+                },
+                success: function (reponse) {
+                    if (reponse == true) {
+                        alert("Cập nhật thành công");
+                    }
+                    else {
+                        alert("Cập nhật không thành công! Vui lòng nhập đủ thông tin!");
+                    }
+                }
+            });
+        }
+    </script>
+
+}
+<!-- Content Header -->
+<div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="formAdd">
+                <div name="addProduct">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="booktitle">Tên sách</label>
+                            <input value="@ViewBag.TenSach " name="tenSP" type="text" class="form-control" id="tenSP" placeholder="Tên sách" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="codebook">Năm xuất bản</label>
+                            <input value="@ViewBag.namXB" name="namXB" type="text" class="form-control" id="namXB" placeholder="Năm xuất bản" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="">Tác giả</label>
+                            <select class="form-control" id="tacgia" name="tacgia">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="Category">Thể loại</label>
+                            <select class="form-control" id="Theloai" name="Theloai">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="publishingcompany">Nhà xuất bản</label>
+                            <select class="form-control" id="nxb" name="nxb">
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="price">Ngôn ngữ</label>
+                            <input value="@ViewBag.ngonngu" name="ngonngu" type="text" class="form-control" id="price" placeholder="Ngôn ngữ" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Người dịch</label>
+                            <input value="@ViewBag.NguoiDich" name="nguoidich" type="text" class="form-control" id="price" placeholder="Người dịch" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Trọng lượng</label>
+                            <input value="@ViewBag.Trongluong" name="trongluong" type="text" class="form-control" id="purchaseprice" placeholder="Trọng lượng" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Kích thước</label>
+                            <input value="@ViewBag.KichThuoc" name="kichthuoc" type="text" class="form-control" id="price" placeholder="Kích thước" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Số trang</label>
+                            <input value="@ViewBag.sotrang" name="sotrang" type="text" class="form-control" id="purchaseprice" placeholder="Số trang" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="price">Giá bán</label>
+                            <input value="@ViewBag.giaban" name="giaban" type="text" class="form-control" id="price" placeholder="Giá bán" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="purchaseprice">Giá nhập</label>
+                            <input value="@ViewBag.gianhap" name="gianhap" type="text" class="form-control" id="purchaseprice" placeholder="Giá nhập" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group img">
+                            <label for="tenanh" class="tittelImg">File ảnh: </label>
+                            <input value="@ViewBag.tenanh" type="file" class="form" id="tenanh" name="tenanh" accept=".png, .jpg">
+                        </div>
+                    </div>
+                    <div class="row tittelSP">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-6">
+                            <a href="@Url.Action("Index")" class="btnPro">Back</a>
+                            <button class="btn btnPro" type="submit" onclick="Update()">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.content-header -->
+
+<script src="~/Areas/Admin/Content/plugins/jquery/jquery.min.js"></script>
+<script src="~/Areas/Admin/Content/dist/js/bootstrap.js"></script>

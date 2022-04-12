@@ -4,6 +4,69 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout_customer.cshtml";
 }
 
+@section scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            GetKH();
+        });
+        function GetKH() {
+            $.ajax({
+                url: 'https://localhost:44357/api/khachhangapi',
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].ID_KHACHHANG + '</th>' +
+                            '<td>' + reponse[i].HOTENKH + '</td>' +
+                            '<td>' + reponse[i].SDT_KH + '</td>' +
+                            '<td>' + reponse[i].DIACHI + '</td>' +
+                            '<td><a href="https://localhost:44357/Admin/Customer/CTKhachHang/' + reponse[i].ID_KHACHHANG +'" class="ChiTietHD">Xem chi tiết</a></td></tr>';
+                    }
+                    document.getElementById('khachhang').innerHTML = table;
+                 },
+                fail: function (response) {
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function GetKHSearch(id) {
+            $.ajax({
+                url: 'https://localhost:44357/api/khachhangapi/' + id,
+                method: 'GET',
+                contentType: 'json',
+                dataType: 'json',
+                error: function (response) {
+                },
+                success: function (reponse) {
+                    const len = reponse.length;
+                    let table = '<tr>';
+                    for (var i = 0; i < len; ++i) {
+                        table = table +
+                            '<th scope="row">' + reponse[i].ID_KHACHHANG + '</th>' +
+                            '<td>' + reponse[i].HOTENKH + '</td>' +
+                            '<td>' + reponse[i].SDT_KH + '</td>' +
+                            '<td>' + reponse[i].DIACHI + '</td>' +
+                            '<td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td></tr>';
+                    }
+                    document.getElementById('khachhang').innerHTML = table;
+                },
+                fail: function (response) {
+                }
+            });
+        }
+        $("input[name='search']").change(function () {
+            GetKHSearch($(this).val());
+        });
+    </script>
+}
 <link href="~/Areas/Admin/Content/style/styleKH.css" rel="stylesheet" />
 <!-- Content Header -->
 <div class="content-wrapper content" style="margin-top: 70px; margin-bottom: 60px">
@@ -16,7 +79,7 @@
                 <!-- tim kiem theo ten, sdt -->
                 <div class="col-sm-6">
                     <div class="inpSearch">
-                        <input type="text" placeholder="Nhập mã, tên hoặc số điện thoại" />
+                        <input type="text" placeholder="Nhập mã hoặc số điện thoại" name="search" />
                         <button class="btn btn-navbar" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
@@ -35,42 +98,7 @@
                             <th scope="col">Thao tác</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>0123467289</td>
-                            <td>Thanh Xuân - Hà Nội</td>
-                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>0398378265</td>
-                            <td>Thanh Xuân - Hà Nội</td>
-                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>0398378265</td>
-                            <td>Cầu giấy - Hà Nội</td>
-                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Larry</td>
-                            <td>0398378265</td>
-                            <td>Cầu giấy - Hà Nội</td>
-                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Larry</td>
-                            <td>0398378265</td>
-                            <td>Cầu giấy - Hà Nội</td>
-                            <td><a href="@Url.Action("CTKhachHang")" class="ChiTietHD">Xem chi tiết</a></td>
-                        </tr>
+                    <tbody id="khachhang">
                     </tbody>
                 </table>
             </div>
@@ -87,18 +115,3 @@
     </div>
 </div>
 <!-- /.content-header -->
-
-<script src="~/Areas/Admin/Content/plugins/jquery/jquery.min.js"></script>
-<script src="~/Areas/Admin/Content/dist/js/bootstrap.js"></script>
-
-<script>
-    function deleteFunc() {
-        let text = "Bạn có muốn xóa sản phẩm này không?";
-        if (confirm(text) == true) {
-            alert("Bạn đã xóa sản phẩm thành công!");
-            return true
-        } else {
-            return false
-        }
-    }
-</script>
